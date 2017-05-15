@@ -14,6 +14,9 @@
 		6931E2111EC98462006C7A15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6931E2101EC98462006C7A15 /* Assets.xcassets */; };
 		6931E2141EC98462006C7A15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6931E2121EC98462006C7A15 /* LaunchScreen.storyboard */; };
 		6931E21F1EC98462006C7A15 /* myResturentAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6931E21E1EC98462006C7A15 /* myResturentAppUITests.swift */; };
+		6936C7A91ECA0E1200F369D6 /* RestaurentHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936C7A81ECA0E1200F369D6 /* RestaurentHomeViewController.swift */; };
+		6936C7AD1ECA0F5400F369D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6936C7AC1ECA0F5400F369D6 /* CoreLocation.framework */; };
+		6936C7AF1ECA0F5B00F369D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6936C7AE1ECA0F5B00F369D6 /* MapKit.framework */; };
 		6937C8D01EC9B1C900A583A1 /* Inconsolata-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6937C8A51EC9B1C900A583A1 /* Inconsolata-Bold.ttf */; };
 		6937C8D11EC9B1C900A583A1 /* Inconsolata-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6937C8A61EC9B1C900A583A1 /* Inconsolata-Regular.ttf */; };
 		6937C8D21EC9B1C900A583A1 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6937C8A71EC9B1C900A583A1 /* OFL.txt */; };
@@ -80,6 +83,9 @@
 		6931E21A1EC98462006C7A15 /* myResturentAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myResturentAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6931E21E1EC98462006C7A15 /* myResturentAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myResturentAppUITests.swift; sourceTree = "<group>"; };
 		6931E2201EC98462006C7A15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6936C7A81ECA0E1200F369D6 /* RestaurentHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurentHomeViewController.swift; sourceTree = "<group>"; };
+		6936C7AC1ECA0F5400F369D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6936C7AE1ECA0F5B00F369D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6937C8A51EC9B1C900A583A1 /* Inconsolata-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inconsolata-Bold.ttf"; sourceTree = "<group>"; };
 		6937C8A61EC9B1C900A583A1 /* Inconsolata-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inconsolata-Regular.ttf"; sourceTree = "<group>"; };
 		6937C8A71EC9B1C900A583A1 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
@@ -129,6 +135,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6936C7AF1ECA0F5B00F369D6 /* MapKit.framework in Frameworks */,
+				6936C7AD1ECA0F5400F369D6 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +156,7 @@
 				6931E2051EC98462006C7A15 /* myResturentApp */,
 				6931E21D1EC98462006C7A15 /* myResturentAppUITests */,
 				6931E2041EC98462006C7A15 /* Products */,
+				6936C7AB1ECA0F5400F369D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,12 +172,11 @@
 		6931E2051EC98462006C7A15 /* myResturentApp */ = {
 			isa = PBXGroup;
 			children = (
+				6936C7AA1ECA0E1700F369D6 /* Restaurent */,
+				6936C7A71ECA0D0200F369D6 /* Login */,
 				6937C8F81EC9C69800A583A1 /* Designable */,
 				6937C8A31EC9B1BE00A583A1 /* Fonts */,
 				6931E2061EC98462006C7A15 /* AppDelegate.swift */,
-				6931E2081EC98462006C7A15 /* ViewController.swift */,
-				6937C8F61EC9C0EC00A583A1 /* SignUpViewController.swift */,
-				6937C8F91EC9D91D00A583A1 /* FinalSignUpViewController.swift */,
 				6931E20A1EC98462006C7A15 /* Main.storyboard */,
 				6931E2101EC98462006C7A15 /* Assets.xcassets */,
 				6931E2121EC98462006C7A15 /* LaunchScreen.storyboard */,
@@ -185,6 +193,33 @@
 				6931E2201EC98462006C7A15 /* Info.plist */,
 			);
 			path = myResturentAppUITests;
+			sourceTree = "<group>";
+		};
+		6936C7A71ECA0D0200F369D6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6931E2081EC98462006C7A15 /* ViewController.swift */,
+				6937C8F61EC9C0EC00A583A1 /* SignUpViewController.swift */,
+				6937C8F91EC9D91D00A583A1 /* FinalSignUpViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		6936C7AA1ECA0E1700F369D6 /* Restaurent */ = {
+			isa = PBXGroup;
+			children = (
+				6936C7A81ECA0E1200F369D6 /* RestaurentHomeViewController.swift */,
+			);
+			name = Restaurent;
+			sourceTree = "<group>";
+		};
+		6936C7AB1ECA0F5400F369D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6936C7AE1ECA0F5B00F369D6 /* MapKit.framework */,
+				6936C7AC1ECA0F5400F369D6 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6937C8A31EC9B1BE00A583A1 /* Fonts */ = {
@@ -434,6 +469,7 @@
 			files = (
 				6937C8F71EC9C0EC00A583A1 /* SignUpViewController.swift in Sources */,
 				6937C8FA1EC9D91D00A583A1 /* FinalSignUpViewController.swift in Sources */,
+				6936C7A91ECA0E1200F369D6 /* RestaurentHomeViewController.swift in Sources */,
 				6931E2091EC98462006C7A15 /* ViewController.swift in Sources */,
 				6931E2071EC98462006C7A15 /* AppDelegate.swift in Sources */,
 				695C1B0F1EC99B1E00C6D36B /* DesignableTextField.swift in Sources */,
