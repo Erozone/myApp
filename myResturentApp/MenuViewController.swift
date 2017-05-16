@@ -24,18 +24,21 @@ class MenuViewController: UIViewController,UICollectionViewDelegate,UICollection
 
     var collectionView:UICollectionView!
     
-    var images = [UIImage(named:"food1")]
+    var images = [UIImage(named:"food1"),UIImage(named:"food1")]
+    var dishName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.title = dishName
+        
         setupCollectionView();
     }
     
     func setupCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 25
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: "foodCell")
@@ -50,7 +53,7 @@ class MenuViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,6 +68,13 @@ class MenuViewController: UIViewController,UICollectionViewDelegate,UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height*0.12)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddFood",let destination = segue.destination as? AddFoodViewController{
+            destination.categoryOfDish = dishName
+        }
+    }
+    
     
 
 }

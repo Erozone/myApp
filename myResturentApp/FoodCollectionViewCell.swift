@@ -78,6 +78,8 @@ class FoodCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    
+    
 }
 
 extension FoodCollectionViewCell{

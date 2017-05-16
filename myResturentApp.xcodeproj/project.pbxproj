@@ -57,6 +57,7 @@
 		6937C8F51EC9B1C900A583A1 /* Yellowtail-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6937C8CF1EC9B1C900A583A1 /* Yellowtail-Regular.ttf */; };
 		6937C8F71EC9C0EC00A583A1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937C8F61EC9C0EC00A583A1 /* SignUpViewController.swift */; };
 		6937C8FA1EC9D91D00A583A1 /* FinalSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937C8F91EC9D91D00A583A1 /* FinalSignUpViewController.swift */; };
+		693E21C71ECB7BAE00F66C8B /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693E21C61ECB7BAE00F66C8B /* AddFoodViewController.swift */; };
 		695C1B0D1EC999C900C6D36B /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C1B0C1EC999C900C6D36B /* DesignableButton.swift */; };
 		695C1B0F1EC99B1E00C6D36B /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695C1B0E1EC99B1E00C6D36B /* DesignableTextField.swift */; };
 		6980E8071ECB18CD004ED80C /* MenuCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6980E8061ECB18CD004ED80C /* MenuCategoriesTableViewController.swift */; };
@@ -129,6 +130,7 @@
 		6937C8CF1EC9B1C900A583A1 /* Yellowtail-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yellowtail-Regular.ttf"; sourceTree = "<group>"; };
 		6937C8F61EC9C0EC00A583A1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6937C8F91EC9D91D00A583A1 /* FinalSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalSignUpViewController.swift; sourceTree = "<group>"; };
+		693E21C61ECB7BAE00F66C8B /* AddFoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
 		695C1B0C1EC999C900C6D36B /* DesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 		695C1B0E1EC99B1E00C6D36B /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		6980E8061ECB18CD004ED80C /* MenuCategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoriesTableViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				6980E8061ECB18CD004ED80C /* MenuCategoriesTableViewController.swift */,
 				6980E8081ECB2109004ED80C /* MenuViewController.swift */,
 				6980E80A1ECB25D6004ED80C /* FoodCollectionViewCell.swift */,
+				693E21C61ECB7BAE00F66C8B /* AddFoodViewController.swift */,
 			);
 			name = Restaurent;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				695C1B0F1EC99B1E00C6D36B /* DesignableTextField.swift in Sources */,
 				6980E8071ECB18CD004ED80C /* MenuCategoriesTableViewController.swift in Sources */,
 				6931E20F1EC98462006C7A15 /* myResturentApp.xcdatamodeld in Sources */,
+				693E21C71ECB7BAE00F66C8B /* AddFoodViewController.swift in Sources */,
 				695C1B0D1EC999C900C6D36B /* DesignableButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

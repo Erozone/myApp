@@ -37,9 +37,13 @@ class MenuCategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let destination = MenuViewController()
-        navigationController?.pushViewController(destination, animated: true)
+        performSegue(withIdentifier: "toMenuVC", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMenuVC",let destination = segue.destination as? MenuViewController,let indexPath = self.tableView.indexPathForSelectedRow{
+            destination.dishName = categories[indexPath.row]
+        }
     }
 
 }
