@@ -8,37 +8,25 @@
 
 import UIKit
 
-class FoodData{
-    var foodImage:UIImage!
-    var foodName:String!
-    var foodPrice:String!
-    
-    init(image:UIImage,name:String,price:String) {
-        foodName = name
-        foodImage = image
-        foodPrice = price
-    }
-}
-
 class MenuViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     var collectionView:UICollectionView!
-    
     var images = [UIImage(named:"food1"),UIImage(named:"food1")]
     var dishName:String!
+    var foodList = [FoodData]()
+    var food:FoodData?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.title = dishName
-        
         setupCollectionView();
     }
     
     func setupCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 25
+        layout.minimumLineSpacing = 0
         collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.register(FoodCollectionViewCell.self, forCellWithReuseIdentifier: "foodCell")
@@ -53,15 +41,16 @@ class MenuViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return foodList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodCell", for: indexPath) as! FoodCollectionViewCell
         cell.awakeFromNib()
-        cell.foodImageView.image = images[indexPath.row]
-        cell.foodName.text = "Default Name"
-        cell.foodPrice.text = "Default Price"
+        let food = foodList[indexPath.row]
+        cell.foodImageView.image = food.foodImage
+        cell.foodName.text = food.foodName
+        cell.foodPrice.text = food.foodPrice
         return cell
     }
     
@@ -75,6 +64,19 @@ class MenuViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
     }
     
+    @IBAction func cancelToMenuViewController(segue:UIStoryboardSegue){
+        
+    }
+    
+    @IBAction func saveFood(segue:UIStoryboardSegue){
+        if let addFoodVC = segue.source as? AddFoodViewController {
+            if let food = addFoodVC.food{
+                foodList.append(food)
+                let indexPath = IndexPath(row: foodList.count-1, section: 0)
+                collectionView.insertItems(at: [indexPath])
+            }
+        }
+    }
     
 
 }

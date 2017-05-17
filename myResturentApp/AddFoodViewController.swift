@@ -19,14 +19,14 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
     @IBOutlet weak var doneBtn: UIButton!
     
     var categoryOfDish:String!
+    var food:FoodData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeTextField()
+        doneBtn.isHidden = true
+        navigationController?.delegate = self
         
-        print("THE_CATEGORY_OF_THE_DISH_IS_\(categoryOfDish!)")
-        
-        // Do any additional setup after loading the view.
     }
 
     //Picks the select image and set it to imageView
@@ -62,14 +62,10 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
         textFieldName.layer.borderWidth = 1
         textFieldName.leftView = paddingView
         textFieldName.leftViewMode = .always
-        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
+        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.black,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
         textFieldName.layer.masksToBounds = false
         textFieldName.delegate = self
         return textFieldName
-    }
-    
-    @IBAction func doneBtnPressed(_ sender: UIButton) {
-        
     }
     
     @IBAction func imgPickButton(_ sender: UIButton){
@@ -79,4 +75,17 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
         image.allowsEditing = false
         self.present(image, animated: true, completion: nil)
     }
+    
+    //Persist the Data to the given Food Category and Dismiss the ViewController
+    @IBAction func doneBtnPressed(_ sender: UIButton){
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "saveFood"{
+            food = FoodData(image: dishImageView.image!, name: dishNameTF.text!, price: dishPriceTF.text!,category: categoryOfDish!)
+        }
+    }
 }
+
+

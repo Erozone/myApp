@@ -391,7 +391,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurent_BG" translatesAutoresizingMaskIntoConstraints="NO" id="39K-aA-vFb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="233.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurent Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ua-vy-dJA">
                                 <rect key="frame" x="16" y="251" width="140" height="40"/>
@@ -450,7 +450,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vC0-ho-BHe">
-                                <rect key="frame" x="0.0" y="444.5" width="375" height="173.5"/>
+                                <rect key="frame" x="0.0" y="445" width="375" height="173"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -510,7 +510,9 @@
                     <toolbarItems>
                         <barButtonItem id="Afs-1E-EgO"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Food Menu" id="PWd-f5-0Le"/>
+                    <navigationItem key="navigationItem" title="Food Menu" id="PWd-f5-0Le">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1B8-Zo-sTX"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="0TW-Zc-Jvm" kind="show" identifier="toMenuVC" id="Bbb-8C-FpB"/>
@@ -520,10 +522,10 @@
             </objects>
             <point key="canvasLocation" x="2476" y="-1830"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--MenuViewController-->
         <scene sceneID="6nW-dA-Flf">
             <objects>
-                <viewController storyboardIdentifier="MenuViewController" id="0TW-Zc-Jvm" customClass="MenuViewController" customModule="myResturentApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="MenuViewController" id="0TW-Zc-Jvm" customClass="MenuViewController" customModule="myResturentApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b1Y-dB-AY8"/>
                         <viewControllerLayoutGuide type="bottom" id="Ocm-q2-T4A"/>
@@ -536,14 +538,14 @@
                     <navigationItem key="navigationItem" id="Z8k-ev-3rb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7gc-Nv-noP">
                             <connections>
-                                <segue destination="gGO-NI-Dbq" kind="show" identifier="toAddFood" id="RNt-SY-qQq"/>
+                                <segue destination="gGO-NI-Dbq" kind="presentation" identifier="toAddFood" id="RNt-SY-qQq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1T-Hq-Fy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3262" y="-1830"/>
+            <point key="canvasLocation" x="3412" y="-1830"/>
         </scene>
         <!--Add Food View Controller-->
         <scene sceneID="nQw-mT-xM8">
@@ -557,21 +559,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangebg" translatesAutoresizingMaskIntoConstraints="NO" id="6EB-Im-G7K">
-                                <rect key="frame" x="0.0" y="7" width="375" height="660"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Dish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YWa-NQ-Fne">
                                 <rect key="frame" x="16" y="114" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price of Dish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IC5-HB-zDq">
                                 <rect key="frame" x="16" y="179" width="343" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
@@ -584,7 +580,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doneBtnPressed:" destination="gGO-NI-Dbq" eventType="touchUpInside" id="wvm-E2-nbd"/>
+                                    <action selector="doneBtnPressed:" destination="gGO-NI-Dbq" eventType="touchUpInside" id="6He-3a-e60"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qVr-6S-6VY">
@@ -600,9 +596,34 @@
                                     <action selector="imgPickButton:" destination="gGO-NI-Dbq" eventType="touchUpInside" id="yMN-JY-YAe"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ILy-6z-yBI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add Dish To Menu" id="7eS-0m-7jG">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zOb-7u-1fD">
+                                            <connections>
+                                                <segue destination="IJK-Pb-5tH" kind="unwind" unwindAction="cancelToMenuViewControllerWithSegue:" id="Ebs-rb-TE7"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="baF-Gj-Lg3">
+                                            <connections>
+                                                <segue destination="IJK-Pb-5tH" kind="unwind" identifier="saveFood" unwindAction="saveFoodWithSegue:" id="CZi-pt-3Pl"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2an-Cr-Bp9">
+                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items/>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="dishImageView" destination="qVr-6S-6VY" id="2U6-is-jiV"/>
                         <outlet property="dishNameTF" destination="YWa-NQ-Fne" id="Dtk-PB-Raa"/>
@@ -612,8 +633,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8V-GZ-2gd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IJK-Pb-5tH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4104.8000000000002" y="-1830.1349325337333"/>
+            <point key="canvasLocation" x="4247" y="-1830"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qAe-QP-HMV">
@@ -656,7 +678,6 @@
     </scenes>
     <resources>
         <image name="login_BG1" width="680" height="985"/>
-        <image name="orangebg" width="750" height="1334"/>
         <image name="restaurent_BG" width="600" height="600"/>
     </resources>
 </document>
