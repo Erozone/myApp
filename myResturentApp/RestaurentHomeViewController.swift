@@ -8,6 +8,10 @@
 
 import UIKit
 import MapKit
+import FirebaseAuth
+import Firebase
+import FirebaseStorage
+import FirebaseDatabase
 
 class Place{
     
@@ -40,6 +44,44 @@ class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
         super.viewDidLoad()
 
         myLocation(latitude: 26.853750, longitude: 80.999117, placeName: "Spice Caves", comment: "Best Place for Foodies")
+        
+        checkIfUserIsLoggedIn()
+    }
+    
+    func checkIfUserIsLoggedIn(){
+        if FIRAuth.auth()?.currentUser?.uid == nil{
+            print("Please Logout the User")
+            return
+        }
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        FIRDatabase.database().reference().child("Restaurents").child(uid!).observe(.value, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            if let dictionary = snapshot.value as? [String:Any]{
+                self.resName.text = dictionary["Restaurent Name"] as? String
+                self.resAddress.text = dictionary["Restaurent Address"] as? String
+                self.resLandMark.text = dictionary["Restaurent Landmark"] as? String
+                self.resPhone.text = dictionary["Restaurent Phone"] as? String
+                
+                if let imageURLString = dictionary["Profile Image"] as? String{
+                    let url = URL(string: imageURLString)
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil{
+                            print(error)
+                            return
+                        }
+                        
+                        //This will add this thread to main queue
+                        DispatchQueue.main.async {
+                            self.resImageView.image = UIImage(data: data!)
+                        }
+                        
+                    }).resume()
+                }
+            }
+            
+        }, withCancel: nil)
     }
     
     func myLocation(latitude:CLLocationDegrees,longitude:CLLocationDegrees,placeName:String,comment:String){
@@ -68,6 +110,4 @@ class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
         resLocationMapView.setRegion(myRegion, animated: true)
     }
     
-    
-
 }

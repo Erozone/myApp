@@ -6,9 +6,11 @@ target 'myResturentApp' do
   use_frameworks!
 
   # Pods for myResturentApp
-
+    pod 'Firebase' 
     pod ‘Firebase/Core’
     pod ‘Firebase/Database’
+    pod 'Firebase/Auth'
+    pod 'FirebaseStorage'
 
   target 'myResturentAppUITests' do
     inherit! :search_paths

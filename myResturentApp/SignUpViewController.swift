@@ -62,4 +62,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate{
     @IBAction func nextScene(_ sender: DesignableButton) {
         self.performSegue(withIdentifier: "toNextScene", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNextScene",let destination = segue.destination as? FinalSignUpViewController{
+            destination.restName = restName.text
+            destination.resAddress = resAddress.text
+            destination.resLocation = resLocation.text
+            destination.resLandMark = resLandMark.text
+            destination.resPincode = resPincode.text
+            destination.resEmail = resEmail.text
+            destination.resPhone = resPhone.text
+        }
+    }
+    
 }

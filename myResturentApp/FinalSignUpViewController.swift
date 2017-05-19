@@ -7,19 +7,51 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import Firebase
+import FirebaseStorage
 
-class FinalSignUpViewController: UIViewController,UITextFieldDelegate{
+class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
     //MARK:- Outlet
     
     @IBOutlet weak var ownerEmail: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var rePassword: UITextField!
+    @IBOutlet weak var restImageView: UIImageView!
+    
+    //MARK:- Properties
+    
+    var restName:String!
+    var resAddress:String!
+    var resLocation:String!
+    var resPincode:String!
+    var resLandMark:String!
+    var resPhone:String!
+    var resEmail:String!
+    
+    var foodCategory = "Default Category"
+    var foodName = "Default Food Name"
+    var foodPrice = "Default Food Price"
+    
+    var menu = Menu(category: "Deafult Category", food: FoodData(image:UIImage(named: "restaurent_BG")!, name: "Default Name", price: "Default price", category: "Default Category"))
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeTextField()
-        // Do any additional setup after loading the view.
+    }
+    
+    //Picks the select image and set it to imageView
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        self.dismiss(animated: true, completion: nil)
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            restImageView.image = pickedImage
+            restImageView.layer.borderColor = UIColor.black.cgColor
+        }
     }
     
     func customizeTextField(){
@@ -40,6 +72,70 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate{
         textFieldName.layer.masksToBounds = false
         textFieldName.delegate = self
         return textFieldName
+    }
+    
+    @IBAction func uploadBtnPressed(_ sender: UIButton) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true, completion: nil)
+    }
+    
+    @IBAction func submitBtnPressed(_ sender:UIButton){
+        
+        if let email = ownerEmail.text,let passwordString = passwordTF.text,let rePassword = rePassword.text,let name = restName,let address = resAddress,let location = resLocation,let landmark = resLandMark,let pincodeString = resPincode,let phoneNumber = resPhone,let resEmailString = resEmail{
+            FIRAuth.auth()?.createUser(withEmail: email, password: passwordString, completion: { (user:FIRUser?, error) in
+                
+                if(error != nil){
+                    print(error as Any)
+                    return
+                }
+                
+                //Save Restaurent Image
+                var data = NSData()
+                if let image = self.restImageView.image{
+                    data = UIImageJPEGRepresentation(image,0.5)! as NSData
+                    
+                    let storageRef = FIRStorage.storage().reference().child("\(self.restName!).png")
+                    
+                    storageRef.put(data as Data, metadata: nil, completion: { (metadata, error) in
+                        if error != nil{
+                            print(error)
+                            return
+                        }
+                        
+                        if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
+                            let values:[String:Any] = ["Restaurent Name":name,"Restaurent Address":address,"Restaurent Location": location,"Restaurent Landmark":landmark,"Restaurent Pincode":pincodeString,"Restaurent Phone":phoneNumber,"Restaurent Email":resEmailString,"Owner Email":email,"Password":passwordString,"Re-Password":rePassword,"Profile Image":profileImageUrl]
+                            
+                            if let uid = user?.uid{
+                                self.registerUserIntoDatabaseWithUid(uid: uid, values: values)
+                            }
+                        }
+                        print(metadata)
+                    })
+                }
+            })
+        }
+    }
+    
+    private func registerUserIntoDatabaseWithUid(uid:String,values: [String:Any]){
+        //Sucessfully authenticated user
+        
+            let databaseRef = FIRDatabase.database().reference(fromURL: "https://my-restaurent-app.firebaseio.com/")
+            let childRef = databaseRef.child("Restaurents").child(uid)
+        
+            childRef.updateChildValues(values, withCompletionBlock: { (err, databaseRef) in
+                
+                if(err != nil){
+                    print(err as Any)
+                    return
+                }
+                
+                print("Saved user successfully into the database")
+                self.performSegue(withIdentifier: "toLoginVC", sender: self)
+                
+            })
     }
     
 }

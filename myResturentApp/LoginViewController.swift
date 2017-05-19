@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class ViewController: UIViewController,UITextFieldDelegate {
+class LoginViewController: UIViewController,UITextFieldDelegate {
     
     //MARK:- Outlets
 
@@ -37,6 +38,14 @@ class ViewController: UIViewController,UITextFieldDelegate {
         passwordTFOutlet.layer.masksToBounds = false
     }
     
+    func displayAlert(title: String,displayError: String){
+        let alert = UIAlertController(title: title, message: displayError, preferredStyle: UIAlertControllerStyle.alert)
+        let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
+        alert.addAction(alertAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         designTextField()
@@ -57,7 +66,21 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBAction func createAccountBtn(_ sender: UIButton) {
         self.performSegue(withIdentifier: "toSignUp", sender: self)
     }
-
-
+    
+    @IBAction func loginBtnPress(_ sender:UIButton){
+        if let email = emailTFOutlet.text,let password = passwordTFOutlet.text{
+            FIRAuth.auth()?.signIn(withEmail:email , password: password, completion: { (user:FIRUser?, error) in
+                if error != nil{
+                    self.displayAlert(title: "Error", displayError: (error?.localizedDescription)!)
+                }
+                
+                print("You have sucessfully Login In")
+                
+                self.performSegue(withIdentifier: "toRestaurentDashboard", sender: self)
+                
+            })
+        }
+    }
+    
 }
 
