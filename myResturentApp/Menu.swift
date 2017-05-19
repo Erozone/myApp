@@ -6,16 +6,13 @@
 //  Copyright © 2017 Mohit Kumar. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class Menu{
+class Menu: NSObject{
     
-    var nameOfCategory:String?
-    var foodList: FoodData?
+    var Category:String?
+    var User_Id:String?
     
-    init(category:String,food: FoodData) {
-        self.nameOfCategory = category
-        self.foodList = food
-    }
+    
+    
 }

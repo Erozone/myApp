@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class MenuViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
@@ -71,6 +72,9 @@ class MenuViewController: UIViewController,UICollectionViewDelegate,UICollection
     @IBAction func saveFood(segue:UIStoryboardSegue){
         if let addFoodVC = segue.source as? AddFoodViewController {
             if let food = addFoodVC.food{
+                
+                saveFoodToDatabase()
+                
                 foodList.append(food)
                 let indexPath = IndexPath(row: foodList.count-1, section: 0)
                 collectionView.insertItems(at: [indexPath])
@@ -78,5 +82,9 @@ class MenuViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
     }
     
+    func saveFoodToDatabase(){
+        let databaseRef = FIRDatabase.database().reference()
+        let childRef = databaseRef.child("Foods").childByAutoId()
+    }
 
 }

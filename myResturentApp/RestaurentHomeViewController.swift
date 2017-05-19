@@ -59,14 +59,20 @@ class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
             print(snapshot)
             
             if let dictionary = snapshot.value as? [String:Any]{
-                self.resName.text = dictionary["Restaurent Name"] as? String
-                self.resAddress.text = dictionary["Restaurent Address"] as? String
-                self.resLandMark.text = dictionary["Restaurent Landmark"] as? String
-                self.resPhone.text = dictionary["Restaurent Phone"] as? String
+                let restaurent = RestaurentData()
                 
-                if let imageURLString = dictionary["Profile Image"] as? String{
+                restaurent.setValuesForKeys(dictionary)
+                
+                self.resName.text = restaurent.Restaurent_Name
+                self.resAddress.text = restaurent.Restaurent_Address
+                self.resLandMark.text = restaurent.Restaurent_Landmark
+                self.resPhone.text = restaurent.Restaurent_Phone
+
+                
+                if let imageURLString = restaurent.Profile_Image{
                     let url = URL(string: imageURLString)
                     URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        
                         if error != nil{
                             print(error)
                             return

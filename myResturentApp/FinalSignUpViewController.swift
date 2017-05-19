@@ -35,9 +35,6 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
     var foodName = "Default Food Name"
     var foodPrice = "Default Food Price"
     
-    var menu = Menu(category: "Deafult Category", food: FoodData(image:UIImage(named: "restaurent_BG")!, name: "Default Name", price: "Default price", category: "Default Category"))
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeTextField()
@@ -106,7 +103,7 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
                         }
                         
                         if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
-                            let values:[String:Any] = ["Restaurent Name":name,"Restaurent Address":address,"Restaurent Location": location,"Restaurent Landmark":landmark,"Restaurent Pincode":pincodeString,"Restaurent Phone":phoneNumber,"Restaurent Email":resEmailString,"Owner Email":email,"Password":passwordString,"Re-Password":rePassword,"Profile Image":profileImageUrl]
+                            let values:[String:Any] = ["Restaurent_Name":name,"Restaurent_Address":address,"Restaurent_Location": location,"Restaurent_Landmark":landmark,"Restaurent_Pincode":pincodeString,"Restaurent_Phone":phoneNumber,"Restaurent_Email":resEmailString,"Owner_Email":email,"Password":passwordString,"Re_Password":rePassword,"Profile_Image":profileImageUrl]
                             
                             if let uid = user?.uid{
                                 self.registerUserIntoDatabaseWithUid(uid: uid, values: values)
@@ -122,7 +119,7 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
     private func registerUserIntoDatabaseWithUid(uid:String,values: [String:Any]){
         //Sucessfully authenticated user
         
-            let databaseRef = FIRDatabase.database().reference(fromURL: "https://my-restaurent-app.firebaseio.com/")
+            let databaseRef = FIRDatabase.database().reference()
             let childRef = databaseRef.child("Restaurents").child(uid)
         
             childRef.updateChildValues(values, withCompletionBlock: { (err, databaseRef) in
