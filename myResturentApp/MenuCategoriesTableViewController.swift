@@ -153,7 +153,7 @@ class MenuCategoriesTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMenuVC",let destination = segue.destination as? MenuViewController,let indexPath = self.tableView.indexPathForSelectedRow{
-            destination.dishName = categories[indexPath.row].Category
+            destination.categoryName = categories[indexPath.row].Category
         }
     }
 

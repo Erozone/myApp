@@ -83,7 +83,7 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveFood"{
-            food = FoodData(image: dishImageView.image!, name: dishNameTF.text!, price: dishPriceTF.text!,category: categoryOfDish!)
+            
         }
     }
 }

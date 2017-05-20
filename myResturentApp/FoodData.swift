@@ -9,16 +9,12 @@
 import Foundation
 import UIKit
 
-class FoodData{
-    var foodImage:UIImage!
-    var foodName:String!
-    var foodPrice:String!
-    var dishCategory:String!
+class FoodData : NSObject{
     
-    init(image:UIImage,name:String,price:String,category:String) {
-        foodName = name
-        foodImage = image
-        foodPrice = price
-        dishCategory = category
-    }
+    var Category:String?
+    var Food_Name:String?
+    var Food_Price:String?
+    var Food_Image_URL:String?
+    var User_Id:String?
+    
 }
