@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Firebase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        do{
+            try FIRAuth.auth()?.signOut()
+            print("APP IS LAUNCING AND USER WILL AUTOMATICALLY SIGN_OUT IF HE IS LOGGED IN")
+        }catch let error{
+            print(error)
+        }
+        
+        self.saveContext()
         
         FIRApp.configure()
         return true
@@ -44,6 +54,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        
+        do{
+            try FIRAuth.auth()?.signOut()
+            print("APP IS TERMINATING AND USER WILL AUTOMATICALLY SIGN_OUT")
+        }catch let error{
+            print(error)
+        }
+        
         self.saveContext()
     }
 

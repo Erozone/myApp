@@ -16,27 +16,27 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var emailTFOutlet: UITextField!
     @IBOutlet weak var passwordTFOutlet: UITextField!
     
-    func designTextField(){
-        
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
-        let paddingView1 = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
-        
-        emailTFOutlet.layer.cornerRadius = 20
-        emailTFOutlet.layer.borderColor = UIColor.white.cgColor
-        emailTFOutlet.layer.borderWidth = 1
-        emailTFOutlet.leftView = paddingView
-        emailTFOutlet.leftViewMode = .always
-        emailTFOutlet.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
-        emailTFOutlet.layer.masksToBounds = false
-        
-        passwordTFOutlet.layer.cornerRadius = 20
-        passwordTFOutlet.layer.borderColor = UIColor.white.cgColor
-        passwordTFOutlet.layer.borderWidth = 1
-        passwordTFOutlet.leftView = paddingView1
-        passwordTFOutlet.leftViewMode = .always
-        passwordTFOutlet.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
-        passwordTFOutlet.layer.masksToBounds = false
+    var handle: FIRAuthStateDidChangeListenerHandle?
+    
+    func customizeTextField(){
+        emailTFOutlet = makeModTF(textFieldName: emailTFOutlet, placeHolderName: "Email")
+        passwordTFOutlet = makeModTF(textFieldName: passwordTFOutlet, placeHolderName: "Password")
     }
+    
+    func makeModTF(textFieldName:UITextField,placeHolderName: String)->UITextField{
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
+        
+        textFieldName.layer.cornerRadius = 20
+        textFieldName.layer.borderColor = UIColor.white.cgColor
+        textFieldName.layer.borderWidth = 1
+        textFieldName.leftView = paddingView
+        textFieldName.leftViewMode = .always
+        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
+        textFieldName.layer.masksToBounds = false
+        textFieldName.delegate = self
+        return textFieldName
+    }
+
     
     func displayAlert(title: String,displayError: String){
         let alert = UIAlertController(title: title, message: displayError, preferredStyle: UIAlertControllerStyle.alert)
@@ -48,11 +48,36 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        designTextField()
+        
+        customizeTextField()
         emailTFOutlet.delegate = self
         passwordTFOutlet.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        // Do any additional setup after loading the view, typically from a nib.
+        handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
+            // [START_EXCLUDE]
+            
+            print("THIS IS LOGIN USER DETAILS FROM LOGIN VC")
+            
+            if let user = user{
+                print(user.email as Any)
+            }
+        
+            print(auth.currentUser as Any)
+            
+            print("END OF THE USER DETAILS")
+            
+            // [END_EXCLUDE]
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -70,13 +95,16 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     @IBAction func loginBtnPress(_ sender:UIButton){
         if let email = emailTFOutlet.text,let password = passwordTFOutlet.text{
             FIRAuth.auth()?.signIn(withEmail:email , password: password, completion: { (user:FIRUser?, error) in
+                
                 if error != nil{
                     self.displayAlert(title: "Error", displayError: (error?.localizedDescription)!)
+                    return
                 }
                 
                 print("You have sucessfully Login In")
                 
-                self.performSegue(withIdentifier: "toRestaurentDashboard", sender: self)
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RestHomeVC")
+                self.present(vc, animated: true, completion: nil)
                 
             })
         }

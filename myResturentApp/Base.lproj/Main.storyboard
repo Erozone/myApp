@@ -128,7 +128,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="myResturentApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="myResturentApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -184,9 +184,6 @@
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="loginBtnPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RYg-Zg-FPc"/>
-                                                <segue destination="UNg-kE-nDx" kind="popoverPresentation" identifier="toRestaurentDashboard" popoverAnchorView="Op9-Yw-KzX" id="k4Q-QM-Z0j">
-                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                </segue>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFU-Xm-D8R">
@@ -253,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.200000000000003" y="64.31784107946028"/>
+            <point key="canvasLocation" x="23" y="-358"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="eeL-EM-9ZC">
@@ -429,7 +426,6 @@
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="submitBtnPressed:" destination="UCg-M9-V64" eventType="touchUpInside" id="2BW-L8-i18"/>
-                                                <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLoginVC" id="bqr-9G-Agl"/>
                                             </connections>
                                         </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="restaurent_BG" translatesAutoresizingMaskIntoConstraints="NO" id="6G2-ik-T3h">
@@ -796,7 +792,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="qAe-QP-HMV">
             <objects>
-                <tabBarController id="UNg-kE-nDx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="RestHomeVC" id="UNg-kE-nDx" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DJm-WU-odl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

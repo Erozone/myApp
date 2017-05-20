@@ -12,14 +12,46 @@ import FirebaseAuth
 
 class MenuCategoriesTableViewController: UITableViewController {
     
+    //MARK:- Properties
     var categories = [Menu]()
-
-//    "Starters","Roti/Breads","Main Chicken Dishes","Lamb Dishes","Sea Food Dishes","Vegetarian Dishes","Rice","Chinese Dishes"
+    var foodDictionary = [String:Menu]()
+    
+    var handle: FIRAuthStateDidChangeListenerHandle?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addCategories))
-        observeMenu()
         
+        observeMenu()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addCategories))
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
+            // [START_EXCLUDE]
+            
+            print("THIS IS LOGIN USER DETAILS FROM MENU CATEGORIES VC")
+            
+            if let user = user{
+                print(user.email as Any)
+                print("USER ID is \(user.uid)")
+                
+
+                
+            }
+            
+            print("END OF THE USER DETAILS")
+            
+            // [END_EXCLUDE]
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
     }
     
     //MARK:- My_Methodd
@@ -33,19 +65,21 @@ class MenuCategoriesTableViewController: UITableViewController {
         let ref = FIRDatabase.database().reference().child("FoodCategory")
         ref.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String:Any]{
+                
                 let menu = Menu()
                 menu.setValuesForKeys(dictionary)
-                self.categories.append(menu)
                 
-                DispatchQueue.main.async(execute: { 
+                if menu.User_Id == self.getCurrentUserId(){
+                    self.categories.append(menu)
+                }
+                
+                DispatchQueue.main.async {
                     self.tableView.reloadData()
-                })
-                
+                }
                 
             }
-            
-            
         }, withCancel: nil)
+        
     }
     
     func displayAlert(title: String,displayMessage: String){
@@ -54,29 +88,25 @@ class MenuCategoriesTableViewController: UITableViewController {
             if let field = alert.textFields![0] as? UITextField{
                 if let category = field.text{
                     print(category)
-//                    self.categories.append(category)
                     
                     let databaseRef = FIRDatabase.database().reference()
                     let childRef = databaseRef.child("FoodCategory").childByAutoId()
                     
                     let uid = self.getCurrentUserId()
+                    
                     let values = ["Category":category,"User_Id":uid]
                     
                     childRef.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
                         
                         if error != nil{
-                            print(error)
+                            print(error!)
                         }
                         
-                        //Category sucessfully saved
+                        print(self.categories.count)
                         
+                        //Category sucessfully saved
                     })
-                    
-                    let indexPath = IndexPath(row: self.categories.count-1,section:0)
-                    self.tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 }
-            }else{
-                //DidN't Enter
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in
@@ -131,8 +161,6 @@ class MenuCategoriesTableViewController: UITableViewController {
     
     func addCategories(){
         displayAlert(title: "Add Food Category", displayMessage: "Enter Food Category")
-        
-        
     }
     
 }

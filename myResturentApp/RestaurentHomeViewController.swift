@@ -39,55 +39,99 @@ class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var resPhone: UILabel!
     @IBOutlet weak var resLocationMapView: MKMapView!
     
+    var handle: FIRAuthStateDidChangeListenerHandle?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         myLocation(latitude: 26.853750, longitude: 80.999117, placeName: "Spice Caves", comment: "Best Place for Foodies")
         
-        checkIfUserIsLoggedIn()
+        
     }
     
-    func checkIfUserIsLoggedIn(){
-        if FIRAuth.auth()?.currentUser?.uid == nil{
-            print("Please Logout the User")
-            return
-        }
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        FIRDatabase.database().reference().child("Restaurents").child(uid!).observe(.value, with: { (snapshot) in
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
+            // [START_EXCLUDE]
             
-            print(snapshot)
+            print("THIS IS LOGIN USER DETAILS FROM RESTAURENT VC")
             
-            if let dictionary = snapshot.value as? [String:Any]{
-                let restaurent = RestaurentData()
-                
-                restaurent.setValuesForKeys(dictionary)
-                
-                self.resName.text = restaurent.Restaurent_Name
-                self.resAddress.text = restaurent.Restaurent_Address
-                self.resLandMark.text = restaurent.Restaurent_Landmark
-                self.resPhone.text = restaurent.Restaurent_Phone
-
-                
-                if let imageURLString = restaurent.Profile_Image{
-                    let url = URL(string: imageURLString)
-                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                        
-                        if error != nil{
-                            print(error)
-                            return
-                        }
-                        
-                        //This will add this thread to main queue
-                        DispatchQueue.main.async {
-                            self.resImageView.image = UIImage(data: data!)
-                        }
-                        
-                    }).resume()
-                }
+            if let user = user{
+                print(user.email as Any)
+                print("USER ID is \(user.uid)")
+                self.loadDataFromDB(user: user)
             }
             
-        }, withCancel: nil)
+            print("END OF THE USER DETAILS")
+            
+            // [END_EXCLUDE]
+        }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
+    }
+    
+    
+    func loadDataFromDB(user:FIRUser){
+//        if FIRAuth.auth()?.currentUser?.uid == nil{
+//            print("Please Logout the User")
+////            return
+//            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+//        }else{
+//            let uid = FIRAuth.auth()?.currentUser?.uid
+            let uid = user.uid
+            FIRDatabase.database().reference().child("Restaurents").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                print(snapshot)
+                
+                if let dictionary = snapshot.value as? [String:Any]{
+                    let restaurent = RestaurentData()
+                    
+                    restaurent.setValuesForKeys(dictionary)
+                    
+                    self.resName.text = restaurent.Restaurent_Name
+                    self.resAddress.text = restaurent.Restaurent_Address
+                    self.resLandMark.text = restaurent.Restaurent_Landmark
+                    self.resPhone.text = restaurent.Restaurent_Phone
+                    
+                    
+                    if let imageURLString = restaurent.Profile_Image{
+                        let url = URL(string: imageURLString)
+                        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                            
+                            if error != nil{
+                                print(error)
+                                return
+                            }
+                            
+                            //This will add this thread to main queue
+                            DispatchQueue.main.async {
+                                self.resImageView.image = UIImage(data: data!)
+                            }
+                            
+                        }).resume()
+                    }
+                }
+                
+            }, withCancel: nil)
+        }
+        
+//    }
+    
+    func handleLogout(){
+        do{
+            try FIRAuth.auth()?.signOut()
+        }catch let error{
+            print(error)
+        }
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
+        self.present(vc, animated: true, completion: nil)
     }
     
     func myLocation(latitude:CLLocationDegrees,longitude:CLLocationDegrees,placeName:String,comment:String){
