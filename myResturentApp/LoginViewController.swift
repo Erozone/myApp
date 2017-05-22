@@ -56,7 +56,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+
         handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
             // [START_EXCLUDE]
             

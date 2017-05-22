@@ -37,9 +37,7 @@ class MenuCategoriesTableViewController: UITableViewController {
             if let user = user{
                 print(user.email as Any)
                 print("USER ID is \(user.uid)")
-                
 
-                
             }
             
             print("END OF THE USER DETAILS")
@@ -62,22 +60,27 @@ class MenuCategoriesTableViewController: UITableViewController {
     }
     
     func observeMenu(){
-        let ref = FIRDatabase.database().reference().child("FoodCategory")
+        let uid = getCurrentUserId()
+        let ref = FIRDatabase.database().reference().child("user-categories").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String:Any]{
+
+            let foodCategoryRef = FIRDatabase.database().reference().child("FoodCategory").child(snapshot.key)
+            
+            foodCategoryRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                let menu = Menu()
-                menu.setValuesForKeys(dictionary)
-                
-                if menu.User_Id == self.getCurrentUserId(){
+                if let dictionary = snapshot.value as? [String:Any]{
+                    let menu = Menu()
+                    menu.setValuesForKeys(dictionary)
+                    
                     self.categories.append(menu)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
                 
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-            }
+            }, withCancel: nil)
+            
         }, withCancel: nil)
         
     }
@@ -102,7 +105,10 @@ class MenuCategoriesTableViewController: UITableViewController {
                             print(error!)
                         }
                         
-                        print(self.categories.count)
+                        let userCategoryRef = FIRDatabase.database().reference().child("user-categories").child(uid)
+                        
+                        let userCategory = childRef.key
+                        userCategoryRef.updateChildValues([userCategory:1])
                         
                         //Category sucessfully saved
                     })
@@ -152,7 +158,7 @@ class MenuCategoriesTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMenuVC",let destination = segue.destination as? MenuViewController,let indexPath = self.tableView.indexPathForSelectedRow{
+        if segue.identifier == "toMenuVC",let destination = segue.destination as? MenuCollectionView,let indexPath = self.tableView.indexPathForSelectedRow{
             destination.categoryName = categories[indexPath.row].Category
         }
     }

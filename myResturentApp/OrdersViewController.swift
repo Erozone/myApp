@@ -9,12 +9,18 @@
 import UIKit
 import FirebaseAuth
 
-class OrdersViewController: UIViewController {
+class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+    
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var handle: FIRAuthStateDidChangeListenerHandle?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
 
     }
     
@@ -40,6 +46,23 @@ class OrdersViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         FIRAuth.auth()?.removeStateDidChangeListener(handle!)
+        
+    }
+    
+    //MARK:- Collection View DataSource
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "orderCell", for: indexPath)
+        
+        return cell
     }
 
     @IBAction func logoutBtn(_sender:UIButton){
@@ -48,7 +71,6 @@ class OrdersViewController: UIViewController {
             try FIRAuth.auth()?.signOut()
             print("Logout the User")
             
-            //THis will instantiate the current view controller two times
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
             self.present(vc, animated: true, completion: nil)
             
