@@ -8,13 +8,16 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
-    
+    //MARK: - OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var handle: FIRAuthStateDidChangeListenerHandle?
+    //MARK: - Properties
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,31 +25,6 @@ class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollec
         collectionView.dataSource = self
         collectionView.delegate = self
 
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
-            // [START_EXCLUDE]
-            
-            print("THIS IS LOGIN USER DETAILS")
-            
-            if let user = user{
-                print(user.email as Any)
-            }
-            
-            print("END OF THE USER DETAILS")
-            
-            // [END_EXCLUDE]
-        }
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
-        
     }
     
     //MARK:- Collection View DataSource
@@ -79,4 +57,16 @@ class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollec
         }
     }
 
+    @IBAction func cancelBtnPressed(segue: UIStoryboardSegue){
+        
+    }
+    
+    @IBAction func doneBtnPressed(segue: UIStoryboardSegue){
+        
+        if let orderDetailVC = segue.source as? OrderDetailViewController{
+            print("Sucessfully Get back")
+        }
+        
+    }
+    
 }

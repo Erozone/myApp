@@ -12,6 +12,8 @@ import FirebaseDatabase
 import Firebase
 import FirebaseStorage
 
+
+
 class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
 
     //MARK:- Outlet
@@ -30,6 +32,7 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
     var resLandMark:String!
     var resPhone:String!
     var resEmail:String!
+    static var counter = 1
     
     var foodCategory = "Default Category"
     var foodName = "Default Food Name"
@@ -103,9 +106,9 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
                         }
                         
                         if let profileImageUrl = metadata?.downloadURL()?.absoluteString{
-                            let values:[String:Any] = ["Restaurent_Name":name,"Restaurent_Address":address,"Restaurent_Location": location,"Restaurent_Landmark":landmark,"Restaurent_Pincode":pincodeString,"Restaurent_Phone":phoneNumber,"Restaurent_Email":resEmailString,"Owner_Email":email,"Password":passwordString,"Re_Password":rePassword,"Profile_Image":profileImageUrl]
                             
                             if let uid = user?.uid{
+                                let values:[String:Any] = ["Restaurent_Name":name,"Restaurent_Address":address,"Restaurent_Location": location,"Restaurent_Landmark":landmark,"Restaurent_Pincode":pincodeString,"Restaurent_Phone":phoneNumber,"Restaurent_Email":resEmailString,"Owner_Email":email,"Password":passwordString,"Re_Password":rePassword,"Profile_Image":profileImageUrl,"UID":uid]
                                 self.registerUserIntoDatabaseWithUid(uid: uid, values: values)
                             }
                         }
@@ -130,8 +133,9 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
                 }
                 
                 print("Saved user successfully into the database")
-                self.performSegue(withIdentifier: "toLoginVC", sender: self)
                 
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
+                self.present(vc, animated: true, completion: nil)
             })
     }
     

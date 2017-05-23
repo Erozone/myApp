@@ -32,48 +32,27 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let uid = FIRAuth.auth()?.currentUser?.uid{
-            userId = uid
-        }
-        
         self.navigationItem.title = categoryName
         loadDataFromDatabase()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
-            // [START_EXCLUDE]
-            
-            print("THIS IS LOGIN USER DETAILS FROM RESTAURENT VC")
-            
-            if let user = user{
-                print(user.email as Any)
-                print("USER ID is \(user.uid)")
-                
-            }
-            
-            print("END OF THE USER DETAILS")
-            
-            // [END_EXCLUDE]
-        }
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
-    }
-    
+       
     //MARK:- My Fuctions
     
+    private func ifUserLoggedIn()->Bool{
+        if let uid = FIRAuth.auth()?.currentUser?.uid{
+            userId = uid
+            return true
+        }else{
+            return false
+        }
+    }
+    
     func loadDataFromDatabase(){
+        
+        if ifUserLoggedIn() == false{
+            self.navigationItem.rightBarButtonItem = nil
+        }
         
         let ref = FIRDatabase.database().reference().child("Food_Owner").child(userId)
         ref.observe(.childAdded, with: { (snapshot) in
@@ -86,12 +65,9 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
                     let food = FoodData()
                     food.setValuesForKeys(dictionary)
                     
-                    self.foodList.append(food)
-                    
-//                    DispatchQueue.main.async { Not a good place to reloadView
-//                        self.collectionView?.reloadData()
-//                    }
-
+                    if self.categoryName == food.Category{
+                        self.foodList.append(food)
+                    }
                 }
                 
             }, withCancel: nil)
@@ -124,6 +100,12 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
         
         cell.foodName.text = food.Food_Name
         cell.foodPrice.text = food.Food_Price
+        if ifUserLoggedIn(){
+            cell.addButtonOutlet.isHidden = true
+        }else{
+            cell.addButtonOutlet.isHidden = false
+        }
+        
         
         if let imageUrlString = food.Food_Image_URL{
             cell.foodImageView.loadImagesUsingCacheFromURLString(url: imageUrlString)
@@ -191,7 +173,6 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
                     }
                     
                     let foodCategoryRef = FIRDatabase.database().reference().child("Food_Owner").child(userId)
-                    
                     
                     let foodCate = childRef.key
                     foodCategoryRef.updateChildValues([foodCate:"Food_Key"])

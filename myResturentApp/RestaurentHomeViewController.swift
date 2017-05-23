@@ -28,6 +28,8 @@ class Place{
     }
 }
 
+let cacheData = NSCache<AnyObject, AnyObject>()
+
 class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
     
     //MARK: - Outlet
@@ -79,50 +81,44 @@ class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
     
     
     func loadDataFromDB(user:FIRUser){
-//        if FIRAuth.auth()?.currentUser?.uid == nil{
-//            print("Please Logout the User")
-////            return
-//            perform(#selector(handleLogout), with: nil, afterDelay: 0)
-//        }else{
-//            let uid = FIRAuth.auth()?.currentUser?.uid
             let uid = user.uid
             FIRDatabase.database().reference().child("Restaurents").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 print(snapshot)
                 
+                if let cacheDictionary = cacheData.object(forKey: uid as AnyObject) as? [String:Any]{
+                    print("Getting Values Through Cache")
+                    let restaurent = RestaurentData()
+                    restaurent.setValuesForKeys(cacheDictionary)
+                    self.setRestaurentViewValues(restaurent: restaurent)
+                    return
+                }
+                
+                
+                
                 if let dictionary = snapshot.value as? [String:Any]{
+                    print("Getting Values Through Firebase")
+                    
                     let restaurent = RestaurentData()
                     
+                    cacheData.setObject(dictionary as AnyObject, forKey: uid as AnyObject)
                     restaurent.setValuesForKeys(dictionary)
-                    
-                    self.resName.text = restaurent.Restaurent_Name
-                    self.resAddress.text = restaurent.Restaurent_Address
-                    self.resLandMark.text = restaurent.Restaurent_Landmark
-                    self.resPhone.text = restaurent.Restaurent_Phone
-                    
-                    
-                    if let imageURLString = restaurent.Profile_Image{
-                        let url = URL(string: imageURLString)
-                        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                            
-                            if error != nil{
-                                print(error)
-                                return
-                            }
-                            
-                            //This will add this thread to main queue
-                            DispatchQueue.main.async {
-                                self.resImageView.image = UIImage(data: data!)
-                            }
-                            
-                        }).resume()
-                    }
+                    self.setRestaurentViewValues(restaurent: restaurent)
                 }
                 
             }, withCancel: nil)
         }
+    
+    func setRestaurentViewValues(restaurent:RestaurentData){
+        self.resName.text = restaurent.Restaurent_Name
+        self.resAddress.text = restaurent.Restaurent_Address
+        self.resLandMark.text = restaurent.Restaurent_Landmark
+        self.resPhone.text = restaurent.Restaurent_Phone
         
-//    }
+        if let imageURLString = restaurent.Profile_Image{
+            self.resImageView.loadImagesUsingCacheFromURLString(url: imageURLString)
+        }
+    }
     
     func handleLogout(){
         do{

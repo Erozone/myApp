@@ -16,13 +16,17 @@ class MenuCategoriesTableViewController: UITableViewController {
     var categories = [Menu]()
     var foodDictionary = [String:Menu]()
     
+    var userId:String? = nil
+    var cameFromHomeVc = false
+    var isUserLog = false
+    
     var handle: FIRAuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         observeMenu()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addCategories))
+        
 
     }
     
@@ -54,35 +58,52 @@ class MenuCategoriesTableViewController: UITableViewController {
     
     //MARK:- My_Methodd
     
+    private func ifUserLoggedIn()->Bool{
+        if let uid = FIRAuth.auth()?.currentUser?.uid{
+            userId = uid
+            return true
+        }else{
+            return false
+        }
+    }
+    
     private func getCurrentUserId()->String{
         let uid = FIRAuth.auth()?.currentUser?.uid
         return uid!
     }
     
     func observeMenu(){
-        let uid = getCurrentUserId()
-        let ref = FIRDatabase.database().reference().child("user-categories").child(uid)
-        ref.observe(.childAdded, with: { (snapshot) in
-
-            let foodCategoryRef = FIRDatabase.database().reference().child("FoodCategory").child(snapshot.key)
-            
-            foodCategoryRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        if ifUserLoggedIn(){
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addCategories))
+        }else{
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
+        
+        if let userId = userId{
+            let ref = FIRDatabase.database().reference().child("user-categories").child(userId)
+            ref.observe(.childAdded, with: { (snapshot) in
                 
-                if let dictionary = snapshot.value as? [String:Any]{
-                    let menu = Menu()
-                    menu.setValuesForKeys(dictionary)
+                let foodCategoryRef = FIRDatabase.database().reference().child("FoodCategory").child(snapshot.key)
+                
+                foodCategoryRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     
-                    self.categories.append(menu)
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                    if let dictionary = snapshot.value as? [String:Any]{
+                        let menu = Menu()
+                        menu.setValuesForKeys(dictionary)
+                        
+                        self.categories.append(menu)
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
-                }
+                    
+                }, withCancel: nil)
                 
             }, withCancel: nil)
-            
-        }, withCancel: nil)
-        
+        }
     }
     
     func displayAlert(title: String,displayMessage: String){
@@ -160,6 +181,7 @@ class MenuCategoriesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMenuVC",let destination = segue.destination as? MenuCollectionView,let indexPath = self.tableView.indexPathForSelectedRow{
             destination.categoryName = categories[indexPath.row].Category
+            destination.userId = userId
         }
     }
 

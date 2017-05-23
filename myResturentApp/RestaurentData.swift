@@ -22,5 +22,6 @@ public class RestaurentData: NSObject{
     var Re_Password:String?
     var Owner_Email:String?
     var Profile_Image:String?
+    var UID:String?
     
 }
