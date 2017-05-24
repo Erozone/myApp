@@ -23,9 +23,10 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
             }
         }
     }
-    var userId:String!
+    var userId:String? = nil
     
     var handle: FIRAuthStateDidChangeListenerHandle?
+    var customerLoggedIn = false
     
     //View Methods
 
@@ -50,11 +51,15 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
     
     func loadDataFromDatabase(){
         
-        if ifUserLoggedIn() == false{
+        if userId != nil{
             self.navigationItem.rightBarButtonItem = nil
+        }else{
+            if let uid = FIRAuth.auth()?.currentUser?.uid{
+                userId = uid
+            }
         }
         
-        let ref = FIRDatabase.database().reference().child("Food_Owner").child(userId)
+        let ref = FIRDatabase.database().reference().child("Food_Owner").child(userId!)
         ref.observe(.childAdded, with: { (snapshot) in
             
             let foodCategoryRef = FIRDatabase.database().reference().child("Foods").child(snapshot.key)
@@ -104,6 +109,7 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
             cell.addButtonOutlet.isHidden = true
         }else{
             cell.addButtonOutlet.isHidden = false
+            cell.addButtonOutlet.addTarget(self, action: #selector(addBtnPressed), for: .touchUpInside)
         }
         
         
@@ -130,7 +136,12 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
     
     //MARK:- My Functions
     
-    
+    func addBtnPressed(){
+        if customerLoggedIn == true{
+            print("Add Button Tapped")
+            
+        }
+    }
     
     @IBAction func cancelToMenuViewController(segue:UIStoryboardSegue){
         
@@ -140,7 +151,7 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
         if let addFoodVC = segue.source as? AddFoodViewController {
             
             if let foodCategory = addFoodVC.categoryOfDish,let foodName = addFoodVC.dishNameTF.text,let foodPrice = addFoodVC.dishPriceTF.text,let dishImage = addFoodVC.dishImageView.image{
-                saveFoodToDatabase(category: foodCategory, foodName: foodName, foodPrice: foodPrice, foodImage: dishImage,userId:userId)
+                saveFoodToDatabase(category: foodCategory, foodName: foodName, foodPrice: foodPrice, foodImage: dishImage,userId:userId!)
             }
         }
     }

@@ -59,6 +59,7 @@
 		6937C8FA1EC9D91D00A583A1 /* FinalSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937C8F91EC9D91D00A583A1 /* FinalSignUpViewController.swift */; };
 		693E21C71ECB7BAE00F66C8B /* AddFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693E21C61ECB7BAE00F66C8B /* AddFoodViewController.swift */; };
 		693E21C91ECB9C7A00F66C8B /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693E21C81ECB9C7A00F66C8B /* FoodData.swift */; };
+		69477B0E1ED5A2C900306EB0 /* CustomerLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69477B0D1ED5A2C900306EB0 /* CustomerLoginViewController.swift */; };
 		694898471ECEE38B0062A735 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694898461ECEE38B0062A735 /* ResetPasswordViewController.swift */; };
 		694898491ECEE9C70062A735 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694898481ECEE9C70062A735 /* OrdersViewController.swift */; };
 		694E480E1ECD72DC00FF29A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 694E480D1ECD72DC00FF29A2 /* GoogleService-Info.plist */; };
@@ -71,6 +72,8 @@
 		6964A26E1ED3655E00C4360E /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6964A26D1ED3655E00C4360E /* MainCollectionViewCell.swift */; };
 		6965AB3A1ED2D27C00EE09DD /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AB391ED2D27C00EE09DD /* MenuCollectionView.swift */; };
 		6965AB3E1ED2F75F00EE09DD /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965AB3D1ED2F75F00EE09DD /* extension.swift */; };
+		696B71431ED5F1E10072E1AF /* CustomerSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B71421ED5F1E10072E1AF /* CustomerSignUpViewController.swift */; };
+		696B71461ED603A20072E1AF /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696B71451ED603A20072E1AF /* SelectionViewController.swift */; };
 		6980E8071ECB18CD004ED80C /* MenuCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6980E8061ECB18CD004ED80C /* MenuCategoriesTableViewController.swift */; };
 		6998B7271ED2CE66001B292E /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6998B7261ED2CE66001B292E /* FoodCollectionViewCell.swift */; };
 		69C379371ED02D8900EE65A9 /* ReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C379361ED02D8900EE65A9 /* ReusableViewController.swift */; };
@@ -148,6 +151,7 @@
 		6937C8F91EC9D91D00A583A1 /* FinalSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalSignUpViewController.swift; sourceTree = "<group>"; };
 		693E21C61ECB7BAE00F66C8B /* AddFoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFoodViewController.swift; sourceTree = "<group>"; };
 		693E21C81ECB9C7A00F66C8B /* FoodData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
+		69477B0D1ED5A2C900306EB0 /* CustomerLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLoginViewController.swift; sourceTree = "<group>"; };
 		694898461ECEE38B0062A735 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		694898481ECEE9C70062A735 /* OrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
 		694E480D1ECD72DC00FF29A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		6964A26D1ED3655E00C4360E /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		6965AB391ED2D27C00EE09DD /* MenuCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
 		6965AB3D1ED2F75F00EE09DD /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		696B71421ED5F1E10072E1AF /* CustomerSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerSignUpViewController.swift; sourceTree = "<group>"; };
+		696B71451ED603A20072E1AF /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		6980E8061ECB18CD004ED80C /* MenuCategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoriesTableViewController.swift; sourceTree = "<group>"; };
 		6998B7261ED2CE66001B292E /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		69C379361ED02D8900EE65A9 /* ReusableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableViewController.swift; sourceTree = "<group>"; };
@@ -231,15 +237,17 @@
 				6936C7A71ECA0D0200F369D6 /* Login */,
 				6937C8F81EC9C69800A583A1 /* Designable */,
 				6937C8A31EC9B1BE00A583A1 /* Fonts */,
-				6931E2061EC98462006C7A15 /* AppDelegate.swift */,
+				696B71441ED5F2030072E1AF /* Customer View Controllers */,
 				6964A26B1ED35E6500C4360E /* HomeViewController.swift */,
 				6964A26D1ED3655E00C4360E /* MainCollectionViewCell.swift */,
+				6931E2061EC98462006C7A15 /* AppDelegate.swift */,
 				6931E20A1EC98462006C7A15 /* Main.storyboard */,
 				6931E2101EC98462006C7A15 /* Assets.xcassets */,
 				6931E2121EC98462006C7A15 /* LaunchScreen.storyboard */,
 				6931E2151EC98462006C7A15 /* Info.plist */,
 				694E480D1ECD72DC00FF29A2 /* GoogleService-Info.plist */,
 				6931E20D1EC98462006C7A15 /* myResturentApp.xcdatamodeld */,
+				696B71451ED603A20072E1AF /* SelectionViewController.swift */,
 			);
 			path = myResturentApp;
 			sourceTree = "<group>";
@@ -407,6 +415,15 @@
 				6965AB3D1ED2F75F00EE09DD /* extension.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		696B71441ED5F2030072E1AF /* Customer View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				69477B0D1ED5A2C900306EB0 /* CustomerLoginViewController.swift */,
+				696B71421ED5F1E10072E1AF /* CustomerSignUpViewController.swift */,
+			);
+			name = "Customer View Controllers";
 			sourceTree = "<group>";
 		};
 		69C379351ED02C7600EE65A9 /* ReUsableComponets */ = {
@@ -672,12 +689,15 @@
 				6936C7A91ECA0E1200F369D6 /* RestaurentHomeViewController.swift in Sources */,
 				6964A26A1ED3558000C4360E /* OrderDetailViewController.swift in Sources */,
 				6931E2091EC98462006C7A15 /* LoginViewController.swift in Sources */,
+				696B71431ED5F1E10072E1AF /* CustomerSignUpViewController.swift in Sources */,
 				693E21C91ECB9C7A00F66C8B /* FoodData.swift in Sources */,
 				6931E2071EC98462006C7A15 /* AppDelegate.swift in Sources */,
+				69477B0E1ED5A2C900306EB0 /* CustomerLoginViewController.swift in Sources */,
 				695C1B0F1EC99B1E00C6D36B /* DesignableTextField.swift in Sources */,
 				6980E8071ECB18CD004ED80C /* MenuCategoriesTableViewController.swift in Sources */,
 				6931E20F1EC98462006C7A15 /* myResturentApp.xcdatamodeld in Sources */,
 				693E21C71ECB7BAE00F66C8B /* AddFoodViewController.swift in Sources */,
+				696B71461ED603A20072E1AF /* SelectionViewController.swift in Sources */,
 				6965AB3A1ED2D27C00EE09DD /* MenuCollectionView.swift in Sources */,
 				694898491ECEE9C70062A735 /* OrdersViewController.swift in Sources */,
 				6998B7271ED2CE66001B292E /* FoodCollectionViewCell.swift in Sources */,

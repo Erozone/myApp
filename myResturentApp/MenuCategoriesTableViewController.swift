@@ -58,15 +58,6 @@ class MenuCategoriesTableViewController: UITableViewController {
     
     //MARK:- My_Methodd
     
-    private func ifUserLoggedIn()->Bool{
-        if let uid = FIRAuth.auth()?.currentUser?.uid{
-            userId = uid
-            return true
-        }else{
-            return false
-        }
-    }
-    
     private func getCurrentUserId()->String{
         let uid = FIRAuth.auth()?.currentUser?.uid
         return uid!
@@ -74,7 +65,10 @@ class MenuCategoriesTableViewController: UITableViewController {
     
     func observeMenu(){
         
-        if ifUserLoggedIn(){
+        if userId == nil{
+            if let uid = FIRAuth.auth()?.currentUser?.uid{
+                userId = uid
+            }
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addCategories))
         }else{
             self.navigationItem.rightBarButtonItem = nil
@@ -181,7 +175,7 @@ class MenuCategoriesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMenuVC",let destination = segue.destination as? MenuCollectionView,let indexPath = self.tableView.indexPathForSelectedRow{
             destination.categoryName = categories[indexPath.row].Category
-            destination.userId = userId
+            destination.userId = categories[indexPath.row].User_Id
         }
     }
 

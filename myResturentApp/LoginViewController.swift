@@ -19,24 +19,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     var handle: FIRAuthStateDidChangeListenerHandle?
     
     func customizeTextField(){
-        emailTFOutlet = makeModTF(textFieldName: emailTFOutlet, placeHolderName: "Email")
-        passwordTFOutlet = makeModTF(textFieldName: passwordTFOutlet, placeHolderName: "Password")
+        emailTFOutlet = emailTFOutlet.makeModTF(textFieldName: emailTFOutlet, placeHolderName: "Email")
+        passwordTFOutlet = passwordTFOutlet.makeModTF(textFieldName: passwordTFOutlet, placeHolderName: "Password")
     }
-    
-    func makeModTF(textFieldName:UITextField,placeHolderName: String)->UITextField{
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
-        
-        textFieldName.layer.cornerRadius = 20
-        textFieldName.layer.borderColor = UIColor.white.cgColor
-        textFieldName.layer.borderWidth = 1
-        textFieldName.leftView = paddingView
-        textFieldName.leftViewMode = .always
-        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
-        textFieldName.layer.masksToBounds = false
-        textFieldName.delegate = self
-        return textFieldName
-    }
-
     
     func displayAlert(title: String,displayError: String){
         let alert = UIAlertController(title: title, message: displayError, preferredStyle: UIAlertControllerStyle.alert)
@@ -52,32 +37,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         customizeTextField()
         emailTFOutlet.delegate = self
         passwordTFOutlet.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
-        handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
-            // [START_EXCLUDE]
-            
-            print("THIS IS LOGIN USER DETAILS FROM LOGIN VC")
-            
-            if let user = user{
-                print(user.email as Any)
-            }
-        
-            print(auth.currentUser as Any)
-            
-            print("END OF THE USER DETAILS")
-            
-            // [END_EXCLUDE]
-        }
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

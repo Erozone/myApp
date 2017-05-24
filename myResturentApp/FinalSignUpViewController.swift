@@ -55,23 +55,12 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
     }
     
     func customizeTextField(){
-        ownerEmail = makeModTF(textFieldName: ownerEmail, placeHolderName: "Enter personal Email")
-        passwordTF = makeModTF(textFieldName: passwordTF, placeHolderName: "Password")
-        rePassword = makeModTF(textFieldName: rePassword, placeHolderName: "Re-Password")
-    }
-    
-    func makeModTF(textFieldName:UITextField,placeHolderName: String)->UITextField{
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
-        
-        textFieldName.layer.cornerRadius = 20
-        textFieldName.layer.borderColor = UIColor.white.cgColor
-        textFieldName.layer.borderWidth = 1
-        textFieldName.leftView = paddingView
-        textFieldName.leftViewMode = .always
-        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
-        textFieldName.layer.masksToBounds = false
-        textFieldName.delegate = self
-        return textFieldName
+        ownerEmail = ownerEmail.makeModTF(textFieldName: ownerEmail, placeHolderName: "Enter personal Email")
+        passwordTF = passwordTF.makeModTF(textFieldName: passwordTF, placeHolderName: "Password")
+        rePassword = rePassword.makeModTF(textFieldName: rePassword, placeHolderName: "Re-Password")
+        ownerEmail.delegate = self
+        passwordTF.delegate = self
+        rePassword.delegate = self
     }
     
     @IBAction func uploadBtnPressed(_ sender: UIButton) {

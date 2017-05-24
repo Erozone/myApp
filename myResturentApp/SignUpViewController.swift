@@ -21,29 +21,21 @@ class SignUpViewController: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var resEmail: UITextField!
     
     func customizeTextField(){
-        restName = makeModTF(textFieldName: restName, placeHolderName: "Restaurent Name")
-        resAddress = makeModTF(textFieldName: resAddress, placeHolderName: "Street Address")
-        resLocation = makeModTF(textFieldName: resLocation, placeHolderName: "Location")
-        resPincode = makeModTF(textFieldName: resPincode, placeHolderName: "Pincode")
-        resLandMark = makeModTF(textFieldName: resLandMark, placeHolderName: "Landmark")
-        resPhone = makeModTF(textFieldName: resPhone, placeHolderName: "Phone")
-        resEmail = makeModTF(textFieldName: resEmail, placeHolderName: "Restaurent Email")
+        restName = restName.makeModTF(textFieldName: restName, placeHolderName: "Restaurent Name")
+        resAddress = resAddress.makeModTF(textFieldName: resAddress, placeHolderName: "Street Address")
+        resLocation = resLocation.makeModTF(textFieldName: resLocation, placeHolderName: "Location")
+        resPincode = resPincode.makeModTF(textFieldName: resPincode, placeHolderName: "Pincode")
+        resLandMark = resLandMark.makeModTF(textFieldName: resLandMark, placeHolderName: "Landmark")
+        resPhone = resPhone.makeModTF(textFieldName: resPhone, placeHolderName: "Phone")
+        resEmail = resEmail.makeModTF(textFieldName: resEmail, placeHolderName: "Restaurent Email")
+        restName.delegate = self
+        resAddress.delegate = self
+        resLocation.delegate = self
+        resPincode.delegate = self
+        resLandMark.delegate = self
+        resPhone.delegate = self
+        resEmail.delegate = self
     }
-    
-    func makeModTF(textFieldName:UITextField,placeHolderName: String)->UITextField{
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
-        
-        textFieldName.layer.cornerRadius = 20
-        textFieldName.layer.borderColor = UIColor.white.cgColor
-        textFieldName.layer.borderWidth = 1
-        textFieldName.leftView = paddingView
-        textFieldName.leftViewMode = .always
-        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
-        textFieldName.layer.masksToBounds = false
-        textFieldName.delegate = self
-        return textFieldName
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

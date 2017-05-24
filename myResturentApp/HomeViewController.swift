@@ -17,7 +17,7 @@ class HomeViewController: UICollectionViewController {
     
     var restaurents = [RestaurentData](){
         didSet{
-            print("Evaruting")
+            print("Executing")
             
             DispatchQueue.main.async {
                 self.collectionView?.reloadData()
@@ -95,3 +95,4 @@ class HomeViewController: UICollectionViewController {
     }
 
 }
+

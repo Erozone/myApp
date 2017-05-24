@@ -12,6 +12,9 @@ import FirebaseAuth
 class ResetPasswordViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet var resetEmailTF:UITextField!
+    @IBOutlet weak var resetBtnOutlet: DesignableButton!
+    
+    var isCustomer = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,27 +22,8 @@ class ResetPasswordViewController: UIViewController,UITextFieldDelegate {
     }
     
     func customizeTextField(){
-        resetEmailTF = makeModTF(textFieldName: resetEmailTF, placeHolderName: "Email Address")
-    }
-
-    func makeModTF(textFieldName:UITextField,placeHolderName: String)->UITextField{
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
-        
-        textFieldName.layer.cornerRadius = 20
-        textFieldName.layer.borderColor = UIColor.red.cgColor
-        textFieldName.layer.borderWidth = 1
-        textFieldName.leftView = paddingView
-        textFieldName.leftViewMode = .always
-        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.black,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
-        textFieldName.layer.masksToBounds = false
-        textFieldName.delegate = self
-        return textFieldName
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        customizeTextField()
-        // Dispose of any resources that can be recreated.
+        resetEmailTF = resetEmailTF.makeModTF(textFieldName: resetEmailTF, placeHolderName: "Email Address")
+        resetEmailTF.delegate = self
     }
     
     func displayAlert(title: String,displayError: String){
@@ -53,6 +37,7 @@ class ResetPasswordViewController: UIViewController,UITextFieldDelegate {
     @IBAction func resetBtnPressed(_ sender:UIButton){
         var title = ""
         var message = ""
+        
         if let email = resetEmailTF.text{
             FIRAuth.auth()?.sendPasswordReset(withEmail: email, completion: { (error) in
                 if error != nil{
@@ -66,11 +51,21 @@ class ResetPasswordViewController: UIViewController,UITextFieldDelegate {
                 
                 self.displayAlert(title: title, displayError: message)
                 self.resetEmailTF.text = ""
-                self.performSegue(withIdentifier: "toBackLogin", sender: self)
+                if self.isCustomer == false{
+                    self.performSegue(withIdentifier: "toBackLogin", sender: self)
+//                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CustomerLoginVC")
+                    self.present(vc, animated: true, completion: nil)
+                }
+                
                 
             })
+        }else{
+            title = "Email Field is empty"
+            message = "Please enter email address"
+            displayAlert(title: title, displayError: message)
         }
-        
     }
     
 }
