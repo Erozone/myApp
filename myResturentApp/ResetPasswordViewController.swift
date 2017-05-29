@@ -18,6 +18,7 @@ class ResetPasswordViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        customizeTextField()
         
     }
     
