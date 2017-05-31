@@ -41,6 +41,7 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeTextField()
+        self.hideKeyboardWhenTappedAround()
     }
     
     //Picks the select image and set it to imageView
@@ -61,6 +62,11 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
         ownerEmail.delegate = self
         passwordTF.delegate = self
         rePassword.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func uploadBtnPressed(_ sender: UIButton) {
@@ -90,7 +96,7 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
                     
                     storageRef.put(data as Data, metadata: nil, completion: { (metadata, error) in
                         if error != nil{
-                            print(error)
+                            print(error as Any)
                             return
                         }
                         
@@ -101,7 +107,7 @@ class FinalSignUpViewController: UIViewController,UITextFieldDelegate,UINavigati
                                 self.registerUserIntoDatabaseWithUid(uid: uid, values: values)
                             }
                         }
-                        print(metadata)
+                        print(metadata as Any)
                     })
                 }
             })

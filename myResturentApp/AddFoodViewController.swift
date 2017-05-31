@@ -16,7 +16,6 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
     @IBOutlet weak var dishNameTF: UITextField!
     @IBOutlet weak var dishPriceTF: UITextField!
     @IBOutlet weak var uploadBtn: UIButton!
-    @IBOutlet weak var doneBtn: UIButton!
     
     var categoryOfDish:String!
     var food:FoodData?
@@ -24,8 +23,9 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeTextField()
-        doneBtn.isHidden = true
         navigationController?.delegate = self
+        
+        self.hideKeyboardWhenTappedAround()
         
     }
 
@@ -42,30 +42,9 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
     }
     
     func customizeTextField(){
-        dishNameTF = makeModTF(textFieldName: dishNameTF, placeHolderName: "Enter Dish Name")
-        dishPriceTF = makeModTF(textFieldName: dishPriceTF, placeHolderName: "Enter Dish Price")
+        dishNameTF = dishNameTF.makeModTF(textFieldName: dishNameTF, placeHolderName: "Enter Dish Name")
+        dishPriceTF = dishPriceTF.makeModTF(textFieldName: dishPriceTF, placeHolderName: "Enter Dish Price")
         
-        dishImageView.layer.cornerRadius = 70
-        dishImageView.contentMode = .scaleAspectFill
-        dishImageView.clipsToBounds = true
-        dishImageView.backgroundColor = UIColor.blue
-        
-        doneBtn.layer.cornerRadius = 25
-        
-    }
-    
-    func makeModTF(textFieldName:UITextField,placeHolderName: String)->UITextField{
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 40))
-        
-        textFieldName.layer.cornerRadius = 20
-        textFieldName.layer.borderColor = UIColor.black.cgColor
-        textFieldName.layer.borderWidth = 1
-        textFieldName.leftView = paddingView
-        textFieldName.leftViewMode = .always
-        textFieldName.attributedPlaceholder = NSAttributedString(string: placeHolderName, attributes: [NSForegroundColorAttributeName: UIColor.black,NSFontAttributeName : UIFont(name: "Roboto", size: 18)!])
-        textFieldName.layer.masksToBounds = false
-        textFieldName.delegate = self
-        return textFieldName
     }
     
     @IBAction func imgPickButton(_ sender: UIButton){
@@ -77,9 +56,6 @@ class AddFoodViewController: UIViewController,UITextFieldDelegate ,UIImagePicker
     }
     
     //Persist the Data to the given Food Category and Dismiss the ViewController
-    @IBAction func doneBtnPressed(_ sender: UIButton){
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveFood"{

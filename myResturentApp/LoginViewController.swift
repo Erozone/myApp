@@ -37,6 +37,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         customizeTextField()
         emailTFOutlet.delegate = self
         passwordTFOutlet.delegate = self
+        
+        self.hideKeyboardWhenTappedAround()
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -46,10 +49,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     //MARK:- Actions
     
-    
-    @IBAction func createAccountBtn(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "toSignUp", sender: self)
-    }
     
     @IBAction func loginBtnPress(_ sender:UIButton){
         if let email = emailTFOutlet.text,let password = passwordTFOutlet.text{
@@ -68,6 +67,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             })
         }
     }
-    
+
 }
 

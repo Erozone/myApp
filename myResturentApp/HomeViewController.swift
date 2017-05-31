@@ -13,7 +13,7 @@ import FirebaseStorage
 
 private let reuseIdentifier = "mainCell"
 
-class HomeViewController: UICollectionViewController {
+class HomeViewController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     var restaurents = [RestaurentData](){
         didSet{
@@ -87,11 +87,16 @@ class HomeViewController: UICollectionViewController {
         
         cell.nameLabel.text = restaurentObj.Restaurent_Name
         cell.addressLabel.text = restaurentObj.Restaurent_Address
+        cell.phoneNumber.text = "Phone: \(restaurentObj.Restaurent_Phone!)"
         if let imageUrlString = restaurentObj.Profile_Image{
             cell.restaurentImageView.loadImagesUsingCacheFromURLString(url: imageUrlString)
         }
     
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: self.view.frame.height*0.20)
     }
 
 }

@@ -52,7 +52,7 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
     func loadDataFromDatabase(){
         
         if userId != nil{
-            self.navigationItem.rightBarButtonItem = nil
+//            self.navigationItem.rightBarButtonItem = nil
         }else{
             if let uid = FIRAuth.auth()?.currentUser?.uid{
                 userId = uid
@@ -104,14 +104,7 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
         print("Total Values in array is: \(foodList.count)")
         
         cell.foodName.text = food.Food_Name
-        cell.foodPrice.text = food.Food_Price
-        if ifUserLoggedIn(){
-            cell.addButtonOutlet.isHidden = true
-        }else{
-            cell.addButtonOutlet.isHidden = false
-            cell.addButtonOutlet.addTarget(self, action: #selector(addBtnPressed), for: .touchUpInside)
-        }
-        
+        cell.foodPrice.text = "Price \(food.Food_Price!)"
         
         if let imageUrlString = food.Food_Image_URL{
             cell.foodImageView.loadImagesUsingCacheFromURLString(url: imageUrlString)
@@ -121,7 +114,7 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: self.view.frame.height*0.15)
+        return CGSize(width: self.view.frame.width, height: self.view.frame.height*0.25)
     }
     
     
@@ -135,13 +128,6 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
     }
     
     //MARK:- My Functions
-    
-    func addBtnPressed(){
-        if customerLoggedIn == true{
-            print("Add Button Tapped")
-            
-        }
-    }
     
     @IBAction func cancelToMenuViewController(segue:UIStoryboardSegue){
         
@@ -170,7 +156,7 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
         storageRef.put(data as Data, metadata: nil) { (metadata, error) in
             
             if error != nil{
-                print(error)
+                print(error as Any)
                 return
             }
             
@@ -179,7 +165,7 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
                 
                 childRef.updateChildValues(values, withCompletionBlock: { (err, databaseRef) in
                     if err != nil{
-                        print(err)
+                        print(err as Any)
                         return
                     }
                     

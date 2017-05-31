@@ -77,6 +77,39 @@
 		6980E8071ECB18CD004ED80C /* MenuCategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6980E8061ECB18CD004ED80C /* MenuCategoriesTableViewController.swift */; };
 		6998B7271ED2CE66001B292E /* FoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6998B7261ED2CE66001B292E /* FoodCollectionViewCell.swift */; };
 		69C379371ED02D8900EE65A9 /* ReusableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C379361ED02D8900EE65A9 /* ReusableViewController.swift */; };
+		69C7C8421EDD5B2200C962F7 /* Cornish.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C8401EDD5B2200C962F7 /* Cornish.ttf */; };
+		69C7C8431EDD5B2200C962F7 /* sharefonts.net.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C8411EDD5B2200C962F7 /* sharefonts.net.txt */; };
+		69C7C8451EDD5DA900C962F7 /* UILabelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C7C8441EDD5DA900C962F7 /* UILabelX.swift */; };
+		69C7C8471EDD5DB500C962F7 /* UIViewX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C7C8461EDD5DB500C962F7 /* UIViewX.swift */; };
+		69C7C8531EDD676F00C962F7 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C8491EDD676F00C962F7 /* Lobster-Regular.ttf */; };
+		69C7C8541EDD676F00C962F7 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C84A1EDD676F00C962F7 /* OFL.txt */; };
+		69C7C8551EDD676F00C962F7 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C84C1EDD676F00C962F7 /* OFL.txt */; };
+		69C7C8561EDD676F00C962F7 /* PlayfairDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C84D1EDD676F00C962F7 /* PlayfairDisplay-Black.ttf */; };
+		69C7C8571EDD676F00C962F7 /* PlayfairDisplay-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C84E1EDD676F00C962F7 /* PlayfairDisplay-BlackItalic.ttf */; };
+		69C7C8581EDD676F00C962F7 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C84F1EDD676F00C962F7 /* PlayfairDisplay-Bold.ttf */; };
+		69C7C8591EDD676F00C962F7 /* PlayfairDisplay-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C8501EDD676F00C962F7 /* PlayfairDisplay-BoldItalic.ttf */; };
+		69C7C85A1EDD676F00C962F7 /* PlayfairDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C8511EDD676F00C962F7 /* PlayfairDisplay-Italic.ttf */; };
+		69C7C85B1EDD676F00C962F7 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C8521EDD676F00C962F7 /* PlayfairDisplay-Regular.ttf */; };
+		69C7C8601EDD680100C962F7 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C85D1EDD680100C962F7 /* OFL.txt */; };
+		69C7C8611EDD680100C962F7 /* Play-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C85E1EDD680100C962F7 /* Play-Bold.ttf */; };
+		69C7C8621EDD680100C962F7 /* Play-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C7C85F1EDD680100C962F7 /* Play-Regular.ttf */; };
+		69ED3A1A1EDC86A4001F694C /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A041EDC86A4001F694C /* IQNSArray+Sort.swift */; };
+		69ED3A1B1EDC86A4001F694C /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A051EDC86A4001F694C /* IQUIScrollView+Additions.swift */; };
+		69ED3A1C1EDC86A4001F694C /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A061EDC86A4001F694C /* IQUITextFieldView+Additions.swift */; };
+		69ED3A1D1EDC86A4001F694C /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A071EDC86A4001F694C /* IQUIView+Hierarchy.swift */; };
+		69ED3A1E1EDC86A4001F694C /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A081EDC86A4001F694C /* IQUIViewController+Additions.swift */; };
+		69ED3A1F1EDC86A4001F694C /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A091EDC86A4001F694C /* IQUIWindow+Hierarchy.swift */; };
+		69ED3A201EDC86A4001F694C /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A0B1EDC86A4001F694C /* IQKeyboardManagerConstants.swift */; };
+		69ED3A211EDC86A4001F694C /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A0C1EDC86A4001F694C /* IQKeyboardManagerConstantsInternal.swift */; };
+		69ED3A221EDC86A4001F694C /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A0D1EDC86A4001F694C /* IQKeyboardManager.swift */; };
+		69ED3A231EDC86A4001F694C /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A0F1EDC86A4001F694C /* IQKeyboardReturnKeyHandler.swift */; };
+		69ED3A241EDC86A4001F694C /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A111EDC86A4001F694C /* IQTextView.swift */; };
+		69ED3A251EDC86A4001F694C /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A131EDC86A4001F694C /* IQBarButtonItem.swift */; };
+		69ED3A261EDC86A4001F694C /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A141EDC86A4001F694C /* IQPreviousNextView.swift */; };
+		69ED3A271EDC86A4001F694C /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A151EDC86A4001F694C /* IQTitleBarButtonItem.swift */; };
+		69ED3A281EDC86A4001F694C /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A161EDC86A4001F694C /* IQToolbar.swift */; };
+		69ED3A291EDC86A4001F694C /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ED3A171EDC86A4001F694C /* IQUIView+IQKeyboardToolbar.swift */; };
+		69ED3A2A1EDC86A4001F694C /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69ED3A191EDC86A4001F694C /* IQKeyboardManager.bundle */; };
 		ADFB375090B0E49DD7BCDD8C /* Pods_myResturentAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B37CFF2BAB86D7EB336695F3 /* Pods_myResturentAppUITests.framework */; };
 		B574220D6DEB818EC03BAE33 /* Pods_myResturentApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BDF48C517D550A8BE4C9BC /* Pods_myResturentApp.framework */; };
 /* End PBXBuildFile section */
@@ -169,6 +202,40 @@
 		6980E8061ECB18CD004ED80C /* MenuCategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategoriesTableViewController.swift; sourceTree = "<group>"; };
 		6998B7261ED2CE66001B292E /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		69C379361ED02D8900EE65A9 /* ReusableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableViewController.swift; sourceTree = "<group>"; };
+		69C7C8401EDD5B2200C962F7 /* Cornish.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cornish.ttf; sourceTree = "<group>"; };
+		69C7C8411EDD5B2200C962F7 /* sharefonts.net.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sharefonts.net.txt; sourceTree = "<group>"; };
+		69C7C8441EDD5DA900C962F7 /* UILabelX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelX.swift; sourceTree = "<group>"; };
+		69C7C8461EDD5DB500C962F7 /* UIViewX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewX.swift; sourceTree = "<group>"; };
+		69C7C8491EDD676F00C962F7 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
+		69C7C84A1EDD676F00C962F7 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		69C7C84C1EDD676F00C962F7 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		69C7C84D1EDD676F00C962F7 /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; };
+		69C7C84E1EDD676F00C962F7 /* PlayfairDisplay-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BlackItalic.ttf"; sourceTree = "<group>"; };
+		69C7C84F1EDD676F00C962F7 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		69C7C8501EDD676F00C962F7 /* PlayfairDisplay-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-BoldItalic.ttf"; sourceTree = "<group>"; };
+		69C7C8511EDD676F00C962F7 /* PlayfairDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Italic.ttf"; sourceTree = "<group>"; };
+		69C7C8521EDD676F00C962F7 /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		69C7C85D1EDD680100C962F7 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		69C7C85E1EDD680100C962F7 /* Play-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Play-Bold.ttf"; sourceTree = "<group>"; };
+		69C7C85F1EDD680100C962F7 /* Play-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Play-Regular.ttf"; sourceTree = "<group>"; };
+		69ED3A041EDC86A4001F694C /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
+		69ED3A051EDC86A4001F694C /* IQUIScrollView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIScrollView+Additions.swift"; sourceTree = "<group>"; };
+		69ED3A061EDC86A4001F694C /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
+		69ED3A071EDC86A4001F694C /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
+		69ED3A081EDC86A4001F694C /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
+		69ED3A091EDC86A4001F694C /* IQUIWindow+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIWindow+Hierarchy.swift"; sourceTree = "<group>"; };
+		69ED3A0B1EDC86A4001F694C /* IQKeyboardManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerConstants.swift; sourceTree = "<group>"; };
+		69ED3A0C1EDC86A4001F694C /* IQKeyboardManagerConstantsInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManagerConstantsInternal.swift; sourceTree = "<group>"; };
+		69ED3A0D1EDC86A4001F694C /* IQKeyboardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardManager.swift; sourceTree = "<group>"; };
+		69ED3A0E1EDC86A4001F694C /* IQKeyboardManagerSwift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerSwift.h; sourceTree = "<group>"; };
+		69ED3A0F1EDC86A4001F694C /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
+		69ED3A111EDC86A4001F694C /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
+		69ED3A131EDC86A4001F694C /* IQBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQBarButtonItem.swift; sourceTree = "<group>"; };
+		69ED3A141EDC86A4001F694C /* IQPreviousNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQPreviousNextView.swift; sourceTree = "<group>"; };
+		69ED3A151EDC86A4001F694C /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
+		69ED3A161EDC86A4001F694C /* IQToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQToolbar.swift; sourceTree = "<group>"; };
+		69ED3A171EDC86A4001F694C /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
+		69ED3A191EDC86A4001F694C /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
 		B37CFF2BAB86D7EB336695F3 /* Pods_myResturentAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myResturentAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C859EA7652A70F276A20BD83 /* Pods-myResturentAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myResturentAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-myResturentAppUITests/Pods-myResturentAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EF66D37C6B1409C558C897F9 /* Pods-myResturentApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myResturentApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-myResturentApp/Pods-myResturentApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +297,7 @@
 		6931E2051EC98462006C7A15 /* myResturentApp */ = {
 			isa = PBXGroup;
 			children = (
+				69ED3A021EDC86A4001F694C /* IQKeyboardManagerSwift */,
 				6965AB3B1ED2F73C00EE09DD /* Helpers */,
 				69C379351ED02C7600EE65A9 /* ReUsableComponets */,
 				694E48131ECD78B900FF29A2 /* DataFiles */,
@@ -238,6 +306,7 @@
 				6937C8F81EC9C69800A583A1 /* Designable */,
 				6937C8A31EC9B1BE00A583A1 /* Fonts */,
 				696B71441ED5F2030072E1AF /* Customer View Controllers */,
+				696B71451ED603A20072E1AF /* SelectionViewController.swift */,
 				6964A26B1ED35E6500C4360E /* HomeViewController.swift */,
 				6964A26D1ED3655E00C4360E /* MainCollectionViewCell.swift */,
 				6931E2061EC98462006C7A15 /* AppDelegate.swift */,
@@ -247,7 +316,6 @@
 				6931E2151EC98462006C7A15 /* Info.plist */,
 				694E480D1ECD72DC00FF29A2 /* GoogleService-Info.plist */,
 				6931E20D1EC98462006C7A15 /* myResturentApp.xcdatamodeld */,
-				696B71451ED603A20072E1AF /* SelectionViewController.swift */,
 			);
 			path = myResturentApp;
 			sourceTree = "<group>";
@@ -300,6 +368,10 @@
 		6937C8A31EC9B1BE00A583A1 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				69C7C85C1EDD680100C962F7 /* Play */,
+				69C7C8481EDD676F00C962F7 /* Lobster */,
+				69C7C84B1EDD676F00C962F7 /* Playfair_Display */,
+				69C7C83F1EDD5B2200C962F7 /* cornish */,
 				6937C8A41EC9B1C900A583A1 /* Inconsolata */,
 				6937C8A81EC9B1C900A583A1 /* Noto_Sans */,
 				6937C8AE1EC9B1C900A583A1 /* Open_Sans */,
@@ -394,6 +466,8 @@
 			isa = PBXGroup;
 			children = (
 				695C1B0C1EC999C900C6D36B /* DesignableButton.swift */,
+				69C7C8461EDD5DB500C962F7 /* UIViewX.swift */,
+				69C7C8441EDD5DA900C962F7 /* UILabelX.swift */,
 				695C1B0E1EC99B1E00C6D36B /* DesignableTextField.swift */,
 			);
 			name = Designable;
@@ -432,6 +506,114 @@
 				69C379361ED02D8900EE65A9 /* ReusableViewController.swift */,
 			);
 			name = ReUsableComponets;
+			sourceTree = "<group>";
+		};
+		69C7C83F1EDD5B2200C962F7 /* cornish */ = {
+			isa = PBXGroup;
+			children = (
+				69C7C8401EDD5B2200C962F7 /* Cornish.ttf */,
+				69C7C8411EDD5B2200C962F7 /* sharefonts.net.txt */,
+			);
+			name = cornish;
+			path = Roboto/cornish;
+			sourceTree = "<group>";
+		};
+		69C7C8481EDD676F00C962F7 /* Lobster */ = {
+			isa = PBXGroup;
+			children = (
+				69C7C8491EDD676F00C962F7 /* Lobster-Regular.ttf */,
+				69C7C84A1EDD676F00C962F7 /* OFL.txt */,
+			);
+			path = Lobster;
+			sourceTree = "<group>";
+		};
+		69C7C84B1EDD676F00C962F7 /* Playfair_Display */ = {
+			isa = PBXGroup;
+			children = (
+				69C7C84C1EDD676F00C962F7 /* OFL.txt */,
+				69C7C84D1EDD676F00C962F7 /* PlayfairDisplay-Black.ttf */,
+				69C7C84E1EDD676F00C962F7 /* PlayfairDisplay-BlackItalic.ttf */,
+				69C7C84F1EDD676F00C962F7 /* PlayfairDisplay-Bold.ttf */,
+				69C7C8501EDD676F00C962F7 /* PlayfairDisplay-BoldItalic.ttf */,
+				69C7C8511EDD676F00C962F7 /* PlayfairDisplay-Italic.ttf */,
+				69C7C8521EDD676F00C962F7 /* PlayfairDisplay-Regular.ttf */,
+			);
+			path = Playfair_Display;
+			sourceTree = "<group>";
+		};
+		69C7C85C1EDD680100C962F7 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				69C7C85D1EDD680100C962F7 /* OFL.txt */,
+				69C7C85E1EDD680100C962F7 /* Play-Bold.ttf */,
+				69C7C85F1EDD680100C962F7 /* Play-Regular.ttf */,
+			);
+			path = Play;
+			sourceTree = "<group>";
+		};
+		69ED3A021EDC86A4001F694C /* IQKeyboardManagerSwift */ = {
+			isa = PBXGroup;
+			children = (
+				69ED3A031EDC86A4001F694C /* Categories */,
+				69ED3A0A1EDC86A4001F694C /* Constants */,
+				69ED3A0D1EDC86A4001F694C /* IQKeyboardManager.swift */,
+				69ED3A0E1EDC86A4001F694C /* IQKeyboardManagerSwift.h */,
+				69ED3A0F1EDC86A4001F694C /* IQKeyboardReturnKeyHandler.swift */,
+				69ED3A101EDC86A4001F694C /* IQTextView */,
+				69ED3A121EDC86A4001F694C /* IQToolbar */,
+				69ED3A181EDC86A4001F694C /* Resources */,
+			);
+			path = IQKeyboardManagerSwift;
+			sourceTree = "<group>";
+		};
+		69ED3A031EDC86A4001F694C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				69ED3A041EDC86A4001F694C /* IQNSArray+Sort.swift */,
+				69ED3A051EDC86A4001F694C /* IQUIScrollView+Additions.swift */,
+				69ED3A061EDC86A4001F694C /* IQUITextFieldView+Additions.swift */,
+				69ED3A071EDC86A4001F694C /* IQUIView+Hierarchy.swift */,
+				69ED3A081EDC86A4001F694C /* IQUIViewController+Additions.swift */,
+				69ED3A091EDC86A4001F694C /* IQUIWindow+Hierarchy.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		69ED3A0A1EDC86A4001F694C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				69ED3A0B1EDC86A4001F694C /* IQKeyboardManagerConstants.swift */,
+				69ED3A0C1EDC86A4001F694C /* IQKeyboardManagerConstantsInternal.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		69ED3A101EDC86A4001F694C /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				69ED3A111EDC86A4001F694C /* IQTextView.swift */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		69ED3A121EDC86A4001F694C /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				69ED3A131EDC86A4001F694C /* IQBarButtonItem.swift */,
+				69ED3A141EDC86A4001F694C /* IQPreviousNextView.swift */,
+				69ED3A151EDC86A4001F694C /* IQTitleBarButtonItem.swift */,
+				69ED3A161EDC86A4001F694C /* IQToolbar.swift */,
+				69ED3A171EDC86A4001F694C /* IQUIView+IQKeyboardToolbar.swift */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		69ED3A181EDC86A4001F694C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				69ED3A191EDC86A4001F694C /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,13 +707,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69C7C8581EDD676F00C962F7 /* PlayfairDisplay-Bold.ttf in Resources */,
+				69ED3A2A1EDC86A4001F694C /* IQKeyboardManager.bundle in Resources */,
+				69C7C85B1EDD676F00C962F7 /* PlayfairDisplay-Regular.ttf in Resources */,
 				6937C8D81EC9B1C900A583A1 /* LICENSE.txt in Resources */,
 				6937C8E91EC9B1C900A583A1 /* Roboto-BlackItalic.ttf in Resources */,
+				69C7C8591EDD676F00C962F7 /* PlayfairDisplay-BoldItalic.ttf in Resources */,
+				69C7C85A1EDD676F00C962F7 /* PlayfairDisplay-Italic.ttf in Resources */,
 				6937C8EA1EC9B1C900A583A1 /* Roboto-Bold.ttf in Resources */,
 				6937C8EB1EC9B1C900A583A1 /* Roboto-BoldItalic.ttf in Resources */,
 				6937C8D41EC9B1C900A583A1 /* NotoSans-Bold.ttf in Resources */,
+				69C7C8551EDD676F00C962F7 /* OFL.txt in Resources */,
 				6937C8EC1EC9B1C900A583A1 /* Roboto-Italic.ttf in Resources */,
 				6937C8D21EC9B1C900A583A1 /* OFL.txt in Resources */,
+				69C7C8621EDD680100C962F7 /* Play-Regular.ttf in Resources */,
 				6937C8D11EC9B1C900A583A1 /* Inconsolata-Regular.ttf in Resources */,
 				6937C8E61EC9B1C900A583A1 /* OpenSans-CondLightItalic.ttf in Resources */,
 				6937C8D71EC9B1C900A583A1 /* NotoSans-Regular.ttf in Resources */,
@@ -539,10 +728,13 @@
 				6937C8D51EC9B1C900A583A1 /* NotoSans-BoldItalic.ttf in Resources */,
 				6937C8F31EC9B1C900A583A1 /* Roboto-ThinItalic.ttf in Resources */,
 				6937C8DE1EC9B1C900A583A1 /* OpenSans-Light.ttf in Resources */,
+				69C7C8431EDD5B2200C962F7 /* sharefonts.net.txt in Resources */,
+				69C7C8611EDD680100C962F7 /* Play-Bold.ttf in Resources */,
 				6931E2141EC98462006C7A15 /* LaunchScreen.storyboard in Resources */,
 				6937C8F21EC9B1C900A583A1 /* Roboto-Thin.ttf in Resources */,
 				6937C8DC1EC9B1C900A583A1 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				6937C8ED1EC9B1C900A583A1 /* Roboto-Light.ttf in Resources */,
+				69C7C8541EDD676F00C962F7 /* OFL.txt in Resources */,
 				6937C8F01EC9B1C900A583A1 /* Roboto-MediumItalic.ttf in Resources */,
 				6937C8F11EC9B1C900A583A1 /* Roboto-Regular.ttf in Resources */,
 				6937C8D61EC9B1C900A583A1 /* NotoSans-Italic.ttf in Resources */,
@@ -554,13 +746,18 @@
 				6937C8E01EC9B1C900A583A1 /* OpenSans-Regular.ttf in Resources */,
 				6937C8D01EC9B1C900A583A1 /* Inconsolata-Bold.ttf in Resources */,
 				6937C8E51EC9B1C900A583A1 /* OpenSans-CondLight.ttf in Resources */,
+				69C7C8531EDD676F00C962F7 /* Lobster-Regular.ttf in Resources */,
 				6937C8F41EC9B1C900A583A1 /* LICENSE.txt in Resources */,
 				6937C8E11EC9B1C900A583A1 /* OpenSans-Semibold.ttf in Resources */,
+				69C7C8561EDD676F00C962F7 /* PlayfairDisplay-Black.ttf in Resources */,
 				6931E2111EC98462006C7A15 /* Assets.xcassets in Resources */,
 				6937C8DA1EC9B1C900A583A1 /* OpenSans-BoldItalic.ttf in Resources */,
 				6937C8E31EC9B1C900A583A1 /* LICENSE.txt in Resources */,
 				6937C8D91EC9B1C900A583A1 /* OpenSans-Bold.ttf in Resources */,
+				69C7C8601EDD680100C962F7 /* OFL.txt in Resources */,
+				69C7C8571EDD676F00C962F7 /* PlayfairDisplay-BlackItalic.ttf in Resources */,
 				6937C8EE1EC9B1C900A583A1 /* Roboto-LightItalic.ttf in Resources */,
+				69C7C8421EDD5B2200C962F7 /* Cornish.ttf in Resources */,
 				6937C8DD1EC9B1C900A583A1 /* OpenSans-Italic.ttf in Resources */,
 				6937C8DF1EC9B1C900A583A1 /* OpenSans-LightItalic.ttf in Resources */,
 				6931E20C1EC98462006C7A15 /* Main.storyboard in Resources */,
@@ -680,27 +877,45 @@
 				69C379371ED02D8900EE65A9 /* ReusableViewController.swift in Sources */,
 				694E48121ECD770400FF29A2 /* RestaurentData.swift in Sources */,
 				6937C8F71EC9C0EC00A583A1 /* SignUpViewController.swift in Sources */,
+				69C7C8451EDD5DA900C962F7 /* UILabelX.swift in Sources */,
 				6965AB3E1ED2F75F00EE09DD /* extension.swift in Sources */,
+				69ED3A1A1EDC86A4001F694C /* IQNSArray+Sort.swift in Sources */,
 				694898471ECEE38B0062A735 /* ResetPasswordViewController.swift in Sources */,
 				6964A26C1ED35E6500C4360E /* HomeViewController.swift in Sources */,
 				694E48101ECD766500FF29A2 /* Menu.swift in Sources */,
 				6964A26E1ED3655E00C4360E /* MainCollectionViewCell.swift in Sources */,
+				69ED3A251EDC86A4001F694C /* IQBarButtonItem.swift in Sources */,
 				6937C8FA1EC9D91D00A583A1 /* FinalSignUpViewController.swift in Sources */,
 				6936C7A91ECA0E1200F369D6 /* RestaurentHomeViewController.swift in Sources */,
 				6964A26A1ED3558000C4360E /* OrderDetailViewController.swift in Sources */,
+				69ED3A1E1EDC86A4001F694C /* IQUIViewController+Additions.swift in Sources */,
 				6931E2091EC98462006C7A15 /* LoginViewController.swift in Sources */,
+				69ED3A271EDC86A4001F694C /* IQTitleBarButtonItem.swift in Sources */,
+				69ED3A211EDC86A4001F694C /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				696B71431ED5F1E10072E1AF /* CustomerSignUpViewController.swift in Sources */,
+				69ED3A231EDC86A4001F694C /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				693E21C91ECB9C7A00F66C8B /* FoodData.swift in Sources */,
 				6931E2071EC98462006C7A15 /* AppDelegate.swift in Sources */,
+				69C7C8471EDD5DB500C962F7 /* UIViewX.swift in Sources */,
+				69ED3A1D1EDC86A4001F694C /* IQUIView+Hierarchy.swift in Sources */,
 				69477B0E1ED5A2C900306EB0 /* CustomerLoginViewController.swift in Sources */,
+				69ED3A281EDC86A4001F694C /* IQToolbar.swift in Sources */,
+				69ED3A261EDC86A4001F694C /* IQPreviousNextView.swift in Sources */,
+				69ED3A1F1EDC86A4001F694C /* IQUIWindow+Hierarchy.swift in Sources */,
+				69ED3A291EDC86A4001F694C /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				69ED3A1B1EDC86A4001F694C /* IQUIScrollView+Additions.swift in Sources */,
 				695C1B0F1EC99B1E00C6D36B /* DesignableTextField.swift in Sources */,
 				6980E8071ECB18CD004ED80C /* MenuCategoriesTableViewController.swift in Sources */,
 				6931E20F1EC98462006C7A15 /* myResturentApp.xcdatamodeld in Sources */,
 				693E21C71ECB7BAE00F66C8B /* AddFoodViewController.swift in Sources */,
 				696B71461ED603A20072E1AF /* SelectionViewController.swift in Sources */,
 				6965AB3A1ED2D27C00EE09DD /* MenuCollectionView.swift in Sources */,
+				69ED3A241EDC86A4001F694C /* IQTextView.swift in Sources */,
+				69ED3A221EDC86A4001F694C /* IQKeyboardManager.swift in Sources */,
 				694898491ECEE9C70062A735 /* OrdersViewController.swift in Sources */,
+				69ED3A201EDC86A4001F694C /* IQKeyboardManagerConstants.swift in Sources */,
 				6998B7271ED2CE66001B292E /* FoodCollectionViewCell.swift in Sources */,
+				69ED3A1C1EDC86A4001F694C /* IQUITextFieldView+Additions.swift in Sources */,
 				695C1B0D1EC999C900C6D36B /* DesignableButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

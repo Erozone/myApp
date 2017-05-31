@@ -14,13 +14,13 @@ class CustomerLoginViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var forgetPasswordLabel: UILabel!
-    @IBOutlet weak var createAccountLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         customizeView()
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     //MARK:- User Functions
@@ -28,12 +28,6 @@ class CustomerLoginViewController: UIViewController,UITextFieldDelegate {
     func customizeView(){
         emailTF = emailTF.makeModTF(textFieldName: emailTF, placeHolderName: "Email")
         passwordTF = passwordTF.makeModTF(textFieldName: passwordTF, placeHolderName: "Password")
-        
-        let resetTap = UITapGestureRecognizer(target: self, action: #selector(resetPasswordBtnTapped))
-        forgetPasswordLabel.addGestureRecognizer(resetTap)
-        
-        let signupTap = UITapGestureRecognizer(target: self, action: #selector(signUpBtnTapped))
-        createAccountLabel.addGestureRecognizer(signupTap)
         
         emailTF.delegate = self
         passwordTF.delegate = self
@@ -44,7 +38,7 @@ class CustomerLoginViewController: UIViewController,UITextFieldDelegate {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 
                 if error != nil{
-                    print(error)
+                    print(error as Any)
                     return
                 }
                 
@@ -55,20 +49,17 @@ class CustomerLoginViewController: UIViewController,UITextFieldDelegate {
         }
     }
     
-    func resetPasswordBtnTapped(){
-        print("Reset Button Tapped")
-        
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ResetView") as! ResetPasswordViewController
-        vc.isCustomer = true
-        
-        self.present(vc, animated: true, completion: nil)
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
-    func signUpBtnTapped(){
-        print("SignUp Button Tapped")
-        
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CustomerSignUp")
-        self.present(vc, animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toResetCustomer",let destination = segue.destination as? ResetPasswordViewController{
+            destination.isCustomer = true
+        }
     }
+    
+    //MARK:- Actions
     
 }

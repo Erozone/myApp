@@ -30,32 +30,6 @@ class MenuCategoriesTableViewController: UITableViewController {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        handle = FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
-            // [START_EXCLUDE]
-            
-            print("THIS IS LOGIN USER DETAILS FROM MENU CATEGORIES VC")
-            
-            if let user = user{
-                print(user.email as Any)
-                print("USER ID is \(user.uid)")
-
-            }
-            
-            print("END OF THE USER DETAILS")
-            
-            // [END_EXCLUDE]
-        }
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        FIRAuth.auth()?.removeStateDidChangeListener(handle!)
-    }
-    
     //MARK:- My_Methodd
     
     private func getCurrentUserId()->String{

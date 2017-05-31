@@ -13,6 +13,6 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var restaurentImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
+    @IBOutlet weak var phoneNumber: UILabel!
     
 }

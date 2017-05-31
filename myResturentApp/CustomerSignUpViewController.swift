@@ -38,6 +38,12 @@ class CustomerSignUpViewController: UIViewController ,UITextFieldDelegate{
         super.viewDidLoad()
         
         customizeView()
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func signUpBtnPressed(_ sender: UIButton) {
@@ -45,7 +51,7 @@ class CustomerSignUpViewController: UIViewController ,UITextFieldDelegate{
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 
                 if error != nil{
-                    print(error)
+                    print(error as Any)
                     return
                 }
                 
