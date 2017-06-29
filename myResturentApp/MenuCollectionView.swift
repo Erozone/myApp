@@ -24,20 +24,33 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
         }
     }
     var userId:String? = nil
+    var isCustomer = false
+    var customerId:String!
+    var orderedFood = [FoodData]()
+    var restaurentData: RestaurentData!
     
     var handle: FIRAuthStateDidChangeListenerHandle?
-    var customerLoggedIn = false
+    
     
     //View Methods
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = categoryName
+        print(restaurent)
+        
         loadDataFromDatabase()
+//        loadDataFromUserDefault()
+        
+        if let user_ID = UserDefaults.standard.string(forKey: "uid"){
+            self.customerId = user_ID
+            print(customerId)
+        }
+        
     }
     
-       
     //MARK:- My Fuctions
     
     private func ifUserLoggedIn()->Bool{
@@ -57,6 +70,12 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
             if let uid = FIRAuth.auth()?.currentUser?.uid{
                 userId = uid
             }
+        }
+        
+        if isCustomer == true{
+            self.navigationItem.rightBarButtonItem = nil
+        }else{
+            
         }
         
         let ref = FIRDatabase.database().reference().child("Food_Owner").child(userId!)
@@ -91,7 +110,6 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return foodList.count
     }
@@ -117,9 +135,45 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
         return CGSize(width: self.view.frame.width, height: self.view.frame.height*0.25)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isCustomer == true{//This option is only for customer
+            
+            let selectedFood = foodList[indexPath.row]
+            displayAlert(title: "Confirm Your Order", displayMessage: "Are You Want to Add This To Cart",food: selectedFood)
+            
+        }
+    }
     
     
     //MARK: - Navigation Controls
+    
+    func displayAlert(title: String,displayMessage: String,food: FoodData){
+        let alert = UIAlertController(title: title, message: displayMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default){(_) in
+            
+            print("Confirm Button Pressed")
+            print(restaurent)
+            
+            self.loadDataFromUserDefault()
+            
+            self.orderedFood.append(food)
+            
+            if let custId = self.customerId{
+                
+                let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self.orderedFood)
+                UserDefaults.standard.set(encodedData, forKey: custId)
+                UserDefaults.standard.synchronize()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in
+            
+        }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddFood",let destination = segue.destination as? AddFoodViewController{
@@ -131,6 +185,15 @@ class MenuCollectionView: UICollectionViewController ,UICollectionViewDelegateFl
     
     @IBAction func cancelToMenuViewController(segue:UIStoryboardSegue){
         
+    }
+    
+    func loadDataFromUserDefault(){
+        if let custId = self.customerId{
+            if let decodedData = UserDefaults.standard.object(forKey: custId) as? Data{
+                let decodedFoods =  NSKeyedUnarchiver.unarchiveObject(with: decodedData) as! [FoodData]
+                self.orderedFood = decodedFoods
+            }
+        }
     }
     
     @IBAction func saveFood(segue:UIStoryboardSegue){

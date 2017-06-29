@@ -55,10 +55,12 @@ class CustomerSignUpViewController: UIViewController ,UITextFieldDelegate{
                     return
                 }
                 
+                let location = "Default Location"
+                
                 if let uid = user?.uid{
                     let databaseRef = FIRDatabase.database().reference().child("Customers").child(uid)
                     
-                    let values = ["Customer's Name":name,"Customer's Email":email,"Customer's Password":password,"Customer's Address":address,"Customer's Phone":phone,"Customer's UserId":uid]
+                    let values = ["CustomerName":name,"CustomerEmail":email,"CustomerLocation":location,"CustomerAddress":address,"CustomerPhoneNumber":phone,"CustomerID":uid]
                     
                     databaseRef.updateChildValues(values)
                     

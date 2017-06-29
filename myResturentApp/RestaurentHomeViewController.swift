@@ -42,6 +42,7 @@ class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var resLocationMapView: MKMapView!
     
     var handle: FIRAuthStateDidChangeListenerHandle?
+    var restID:String!
     
     
     override func viewDidLoad() {
@@ -64,12 +65,12 @@ class RestaurentHomeViewController: UIViewController,CLLocationManagerDelegate {
             if let user = user{
                 print(user.email as Any)
                 print("USER ID is \(user.uid)")
+                
                 self.loadDataFromDB(user: user)
+                self.restID = user.uid
             }
             
             print("END OF THE USER DETAILS")
-            
-            // [END_EXCLUDE]
         }
         
     }

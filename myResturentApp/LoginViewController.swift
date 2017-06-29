@@ -59,6 +59,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                     return
                 }
                 
+                if let uid = user?.uid {
+                    UserDefaults.standard.setValue(uid, forKey: restaurentIDKey)
+                    UserDefaults.standard.synchronize()
+                }
+                
                 print("You have sucessfully Login In")
                 
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RestHomeVC")

@@ -9,6 +9,13 @@
 import UIKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
+let FOOD_ORDER_NOTIFICATION = NSNotification.Name("FoodOrderNotification")
+let ORDER_FOOD_KEY = "foods"
+var restaurentID = ""
+var restaurentImageURL = ""
+var restaurent : RestaurentData? = nil
+var customerID: String? = nil
+var restaurentIDKey = "restaurentID"
 
 extension UIImageView{
     

@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 
 
 private let reuseIdentifier = "mainCell"
@@ -24,12 +25,18 @@ class HomeViewController: UICollectionViewController,UICollectionViewDelegateFlo
             }
         }
     }
+    
+    var customerId:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadRestaurents()
 
+        if let user_ID = UserDefaults.standard.string(forKey: "uid"){
+            self.customerId = user_ID
+            print(customerId)
+        }
     }
     
     //MARK:- My Functions
@@ -63,8 +70,11 @@ class HomeViewController: UICollectionViewController,UICollectionViewDelegateFlo
             if let cell = sender as? MainCollectionViewCell{
                 if let indexPath = self.collectionView?.indexPath(for: cell){
                     let selectedRow = restaurents[indexPath.row]
+                    restaurent = selectedRow
+                    destination.restaurentData = selectedRow
                     destination.userId = selectedRow.UID
-                    destination.cameFromHomeVc = true
+                    destination.restaurent_ImageURLLocal = selectedRow.Profile_Image
+                    destination.isCustomerLoggedIn = true
                 }
             }
         }
@@ -98,6 +108,26 @@ class HomeViewController: UICollectionViewController,UICollectionViewDelegateFlo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width, height: self.view.frame.height*0.20)
     }
+    
+    //MARK:- Action
+    
+    @IBAction func logoutBtn(_sender:UIButton){
+        
+        do{
+            try FIRAuth.auth()?.signOut()
+            print("Logout the User")
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectionVC")
+            self.present(vc, animated: true, completion: nil)
+            
+        }catch let err as NSError{
+            print(err.localizedDescription)
+        }
+        
+//        if let bundle = Bundle.main.bundleIdentifier { //Clear the UserDefault
+//            UserDefaults.standard.removePersistentDomain(forName: bundle)
+//        }
 
+    }
 }
 

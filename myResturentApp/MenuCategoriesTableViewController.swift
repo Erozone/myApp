@@ -17,8 +17,12 @@ class MenuCategoriesTableViewController: UITableViewController {
     var foodDictionary = [String:Menu]()
     
     var userId:String? = nil
-    var cameFromHomeVc = false
+    var restaurent_ImageURLLocal: String? = nil
+    var restaurentData :RestaurentData? = nil
+    
+    var customerId: String!
     var isUserLog = false
+    var isCustomerLoggedIn = false
     
     var handle: FIRAuthStateDidChangeListenerHandle?
     
@@ -27,7 +31,10 @@ class MenuCategoriesTableViewController: UITableViewController {
         
         observeMenu()
         
-
+        if let user_ID = UserDefaults.standard.string(forKey: "uid"){
+            self.customerId = user_ID
+            print(customerId)
+        }
     }
     
     //MARK:- My_Methodd
@@ -39,7 +46,7 @@ class MenuCategoriesTableViewController: UITableViewController {
     
     func observeMenu(){
         
-        if userId == nil{
+        if isCustomerLoggedIn == false{
             if let uid = FIRAuth.auth()?.currentUser?.uid{
                 userId = uid
             }
@@ -47,7 +54,6 @@ class MenuCategoriesTableViewController: UITableViewController {
         }else{
             self.navigationItem.rightBarButtonItem = nil
         }
-        
         
         if let userId = userId{
             let ref = FIRDatabase.database().reference().child("user-categories").child(userId)
@@ -139,6 +145,7 @@ class MenuCategoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         performSegue(withIdentifier: "toMenuVC", sender: self)
     }
     
@@ -149,7 +156,12 @@ class MenuCategoriesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMenuVC",let destination = segue.destination as? MenuCollectionView,let indexPath = self.tableView.indexPathForSelectedRow{
             destination.categoryName = categories[indexPath.row].Category
+            if restaurentData != nil{
+               destination.restaurentData = restaurentData
+            }
             destination.userId = categories[indexPath.row].User_Id
+            destination.isCustomer = isCustomerLoggedIn
+            
         }
     }
 

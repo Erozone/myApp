@@ -42,8 +42,10 @@ class CustomerLoginViewController: UIViewController,UITextFieldDelegate {
                     return
                 }
                 
-                let vc  = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NavHomeVC")
+                let userId = user?.uid
+                UserDefaults.standard.set(userId, forKey: "uid")
                 
+                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CustomerPanelVC")
                 self.present(vc, animated: true, completion: nil)
             })
         }
