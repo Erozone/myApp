@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import Firebase
 
-class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     //MARK: - OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
@@ -84,14 +84,20 @@ class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollec
         }
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: self.view.frame.width, height: (self.view.frame.height*0.25))
+//    }
 
+    //MARK:- Actions
+    
     @IBAction func logoutBtn(_sender:UIButton){
         
         do{
             try FIRAuth.auth()?.signOut()
             print("Logout the User")
             
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC")
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectionVC")
             self.present(vc, animated: true, completion: nil)
             
         }catch let err as NSError{

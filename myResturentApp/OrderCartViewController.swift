@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 
 
-class OrderCartViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class OrderCartViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var RestaurentImageView: UIImageView!
@@ -58,6 +58,8 @@ class OrderCartViewController: UIViewController,UICollectionViewDelegate,UIColle
         NotificationCenter.default.removeObserver(FOOD_ORDER_NOTIFICATION)
     }
     
+    //MARK:- CollectionView DataSource
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -77,6 +79,10 @@ class OrderCartViewController: UIViewController,UICollectionViewDelegate,UIColle
         cell.foodPrice.text = food.Food_Price
         cell.foodQuantity.text = "1"
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: (self.view.frame.height)*0.12)
     }
     
     //MARK:- My Functions
