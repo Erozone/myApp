@@ -84,10 +84,6 @@ class OrdersViewController: UIViewController,UICollectionViewDataSource,UICollec
         }
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: self.view.frame.width, height: (self.view.frame.height*0.25))
-//    }
 
     //MARK:- Actions
     

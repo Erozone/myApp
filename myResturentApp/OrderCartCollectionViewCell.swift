@@ -14,6 +14,8 @@ class OrderCartCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var foodPrice: UILabel!
     @IBOutlet weak var foodQuantity: UILabel!
     @IBOutlet weak var myStepper: UIStepper!
+    @IBOutlet weak var totalPrice: UILabel!
+    @IBOutlet weak var totalRupees: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,8 +23,21 @@ class OrderCartCollectionViewCell: UICollectionViewCell {
         myStepper.minimumValue = 1
     }
     
-    
     @IBAction func StepperTapped(_ sender: UIStepper) {
-        foodQuantity.text = Int(sender.value).description
+        
+        if let originalPrice = foodPrice.text,let foodName = foodName.text{
+            var originalPrice = originalPrice
+            if let value = UserDefaults.standard.value(forKey: foodName) as? String{
+                originalPrice = value
+            }else{
+                UserDefaults.standard.setValue(originalPrice, forKey: foodName)
+                UserDefaults.standard.synchronize()
+            }
+            
+            let quantity = Int(sender.value)
+            let priceOfFood = quantity*Int(originalPrice)!
+            foodPrice.text = priceOfFood.description
+            foodQuantity.text = quantity.description
+        }
     }
 }

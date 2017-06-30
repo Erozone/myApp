@@ -66,6 +66,7 @@ class OrderCartViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return foodList.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -78,6 +79,7 @@ class OrderCartViewController: UIViewController,UICollectionViewDelegate,UIColle
         cell.foodName.text = food.Food_Name
         cell.foodPrice.text = food.Food_Price
         cell.foodQuantity.text = "1"
+        
         return cell
     }
     
@@ -85,13 +87,38 @@ class OrderCartViewController: UIViewController,UICollectionViewDelegate,UIColle
         return CGSize(width: self.view.frame.width, height: (self.view.frame.height)*0.12)
     }
     
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let food = foodList[indexPath.row]
+//        
+//        let cell = collectionView.cellForItem(at: indexPath) as! OrderCartCollectionViewCell
+//        cell.foodPrice.text = food.Food_Price
+//    }
+    
     //MARK:- My Functions
     
     func displayAlert(title: String,displayMessage: String){
         let alert = UIAlertController(title: title, message: displayMessage, preferredStyle: UIAlertControllerStyle.alert)
-        let confirmAction = UIAlertAction(title: "Ok", style: .default){(_) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (_) in
             
         }
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default){(_) in
+            
+            if self.foodList.count != 0{
+                for food in self.foodList{
+                    if let category = food.Category,let foodName = food.Food_Name,let foodPrice = food.Food_Price,let restaurentId = food.User_Id{
+                        self.saveOdersToDatabase(category: category, foodName: foodName, foodPrice: foodPrice, restaurentId: restaurentId)
+                    }
+                }
+                
+                UserDefaults.standard.removeObject(forKey: self.customerId)
+                UserDefaults.standard.synchronize()
+                self.foodList = [FoodData]()
+                
+                print("Data Saved To Database and Removed From User Defaults")
+            }
+        }
+        
+        alert.addAction(cancelAction)
         alert.addAction(confirmAction)
         
         self.present(alert, animated: true, completion: nil)
@@ -135,24 +162,7 @@ class OrderCartViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     @IBAction func placeOrder(_ sender: UIButton) {
         
-        if foodList.count != 0{
-            for food in foodList{
-                if let category = food.Category,let foodName = food.Food_Name,let foodPrice = food.Food_Price,let restaurentId = food.User_Id{
-                    saveOdersToDatabase(category: category, foodName: foodName, foodPrice: foodPrice, restaurentId: restaurentId)
-                }
-            }
-            
-            UserDefaults.standard.removeObject(forKey: self.customerId)
-            UserDefaults.standard.synchronize()
-            
-            displayAlert(title: "Order Placed", displayMessage: "Your Order Has Been Placed Sucessfully")
-            
-            print("Data Saved To Database and Removed From User Defaults")
-            
-            foodList = [FoodData]()
-        }
-        
-        
+        displayAlert(title: "Confirm Your Order", displayMessage: "Your Bill Amount is $100")
     }
     
     
